@@ -4,13 +4,13 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-        <meta name="eb28-build-id" content="c0417bd6e30e199d27493c307ba814918a700863" />
+        <meta name="eb28-build-id" content="8597c6d4f" />
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
 <title>CadetCatch — Find Coast Guard Academy cadet photos faster</title>
-    <meta name="description" content="CadetCatch helps U.S. Coast Guard Academy (USCGA) families find cadet photos faster during Swab Summer and beyond. Add a clear photo of your cadet, search event photos, and review possible matches on your iPhone." />
-    <meta name="theme-color" content="#f8fafc" />
+    <meta name="description" content="CadetCatch helps U.S. Coast Guard Academy families find cadet photos faster. Add one clear photo, enable the photo pages you follow, and review possible matches on your iPhone." />
+    <meta name="theme-color" content="#061411" />
     <meta name="color-scheme" content="light" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <link rel="canonical" href="https://cadetcatch.com/" />
@@ -18,16 +18,16 @@
     <meta property="og:site_name" content="CadetCatch" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="CadetCatch — Find Coast Guard Academy cadet photos faster" />
-    <meta property="og:description" content="CadetCatch helps U.S. Coast Guard Academy (USCGA) families find cadet photos faster during Swab Summer and beyond. Add a clear photo of your cadet, search event photos, and review possible matches on your iPhone." />
+    <meta property="og:description" content="CadetCatch helps U.S. Coast Guard Academy families find cadet photos faster. Add one clear photo, enable the photo pages you follow, and review possible matches on your iPhone." />
     <meta property="og:url" content="https://cadetcatch.com/" />
     <meta property="og:image" content="https://cadetcatch.com/img/find-cadet-photos.png" />
     <meta property="og:image:alt" content="CadetCatch — Find Coast Guard Academy cadet photos faster" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="CadetCatch — Find Coast Guard Academy cadet photos faster" />
-    <meta name="twitter:description" content="CadetCatch helps U.S. Coast Guard Academy (USCGA) families find cadet photos faster during Swab Summer and beyond. Add a clear photo of your cadet, search event photos, and review possible matches on your iPhone." />
+    <meta name="twitter:description" content="CadetCatch helps U.S. Coast Guard Academy families find cadet photos faster. Add one clear photo, enable the photo pages you follow, and review possible matches on your iPhone." />
     <meta name="twitter:image" content="https://cadetcatch.com/img/find-cadet-photos.png" />
-    <script type="application/ld+json">[{"@context":"https://schema.org","@type":"Organization","@id":"https://eb28.co/#organization","name":"EB28","url":"https://eb28.co","logo":"https://eb28.co/favicon.svg"},{"@context":"https://schema.org","@type":"SoftwareApplication","name":"CadetCatch","applicationCategory":"LifestyleApplication","operatingSystem":"iOS","offers":{"@type":"Offer","name":"Family Monthly","price":"12.99","priceCurrency":"USD","description":"Auto-renewing monthly subscription. Free to download.","url":"https://apps.apple.com/us/app/cadetcatch/id6769565852"},"url":"https://apps.apple.com/us/app/cadetcatch/id6769565852","image":"https://cadetcatch.com/img/find-cadet-photos.png","description":"CadetCatch helps Coast Guard Academy families keep up with cadet photos without digging through every gallery by hand. Search event photos and review possible matches yourself.","provider":{"@id":"https://eb28.co/#organization"}}]</script>
-<link rel="preload" as="image" href="/images/hero_bg_app.png" fetchpriority="high" />
+    <script type="application/ld+json">[{"@context":"https://schema.org","@type":"Organization","@id":"https://eb28.co/#organization","name":"EB28","url":"https://eb28.co","logo":"https://eb28.co/favicon.svg"},{"@context":"https://schema.org","@type":"SoftwareApplication","name":"CadetCatch","applicationCategory":"LifestyleApplication","operatingSystem":"iOS","offers":{"@type":"Offer","name":"Family Monthly","price":"12.99","priceCurrency":"USD","description":"Auto-renewing monthly subscription. Free to download.","url":"https://apps.apple.com/us/app/cadetcatch/id6769565852"},"url":"https://apps.apple.com/us/app/cadetcatch/id6769565852","image":"https://cadetcatch.com/img/find-cadet-photos.png","description":"CadetCatch helps Coast Guard Academy families spend less time scrolling photo galleries. Add a clear photo, enable photo pages, and review possible matches yourself.","provider":{"@id":"https://eb28.co/#organization"}}]</script>
+<link rel="preload" as="image" href="/img/find-cadet-photos.png" fetchpriority="high" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <script>
@@ -68,26 +68,58 @@
       }
 
     </style>
-    <script type="module" crossorigin src="/assets/index-DDDMo7_a.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-DAgKGBI2.css">
+    <script type="module" crossorigin src="/assets/index-On2ofQGJ.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-DbccHTAs.css">
   </head>
   <body>
     <div id="root"></div>
-    <script src="/site-analytics.js?v=20260713-google-apple"></script>
+    <script>
+      // Loads GA4 only when a measurement ID is set in /analytics-config.json,
+      // so analytics activates from config without a rebuild.
+      (function () {
+        fetch('/analytics-config.json', { cache: 'no-store' })
+          .then(function (r) { return r.ok ? r.json() : null; })
+          .then(function (cfg) {
+            var id = cfg && String(cfg.ga4MeasurementId || '').trim();
+            if (!id) return;
+            var s = document.createElement('script');
+            s.async = true;
+            s.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(id);
+            document.head.appendChild(s);
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { window.dataLayer.push(arguments); }
+            window.gtag = gtag;
+            gtag('js', new Date());
+            gtag('config', id);
+          })
+          .catch(function () {});
+      })();
+    </script>
     <noscript>
-      <main data-noscript-site="cadetcatch" style="padding: 32px; font-family: Arial, sans-serif; background: #f8fafc; color: #0f172a;">
-        <h1>CadetCatch</h1>
-        <p>Find Coast Guard Academy cadet photos faster and review possible matches yourself.</p>
-        <nav aria-label="CadetCatch resources">
+      <main style="padding: 32px; font-family: Arial, sans-serif; background: #ffffff; color: #0f172a;">
+        <h1>EB28 organic growth resources</h1>
+        <p>Lead-focused website, local SEO, and automation guides for Melbourne, Florida businesses.</p>
+        <nav aria-label="EB28 organic growth resources">
           <ul>
-            <li><a href="/">CadetCatch home</a></li>
-            <li><a href="/swab-summer-photos/">Swab Summer photo guide</a></li>
-            <li><a href="/support/">Support</a></li>
-            <li><a href="/privacy/">Privacy</a></li>
-            <li><a href="https://apps.apple.com/us/app/cadetcatch/id6769565852">Download on the App Store</a></li>
+            <li>
+              <a href="/blog/ai-receptionist-for-local-business-what-to-automate-and-what-to-keep-human/">
+                AI receptionist for local business
+              </a>
+            </li>
+            <li>
+              <a href="/blog/website-audit-checklist-for-melbourne-fl-businesses-losing-leads/">
+                Website audit Melbourne FL
+              </a>
+            </li>
+            <li>
+              <a href="/blog/how-to-rank-in-the-melbourne-fl-map-pack-without-spammy-seo/">
+                How to rank in Melbourne FL map pack
+              </a>
+            </li>
+            <li><a href="/melbournewebstudio/#quiz">Melbourne Web Studio growth quiz</a></li>
+            <li><a href="/blog/">EB28 blog</a></li>
           </ul>
         </nav>
-        <p>CadetCatch is independent and is not affiliated with USCGA, USCG, or DHS.</p>
       </main>
     </noscript>
   </body>
