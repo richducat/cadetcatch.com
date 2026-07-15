@@ -9,11 +9,16 @@
     pricing_view: true,
     app_store_click: true,
   };
+  var APP_STORE_SELECTOR =
+    '[data-cc-app-store], [data-analytics-event="app_store_click"]';
   var pendingEvents = [];
   var ga4Enabled = false;
   var configResolved = false;
   var appleAttributionConfig = null;
   var appleLinkObserver = null;
+  var pricingObserver = null;
+  var pricingMutationObserver = null;
+  var pricingViewTracked = false;
 
   global.dataLayer = global.dataLayer || [];
   global.gtag = global.gtag || function gtag() {
@@ -123,7 +128,7 @@
   function configureAppleCampaignLinks(config) {
     appleAttributionConfig = config;
 
-    var links = document.querySelectorAll('[data-cc-app-store]');
+    var links = document.querySelectorAll(APP_STORE_SELECTOR);
     Array.prototype.forEach.call(links, function (link) {
       configureAppleCampaignLink(link, config);
     });
@@ -136,11 +141,11 @@
       Array.prototype.forEach.call(mutations, function (mutation) {
         Array.prototype.forEach.call(mutation.addedNodes || [], function (node) {
           if (!node || node.nodeType !== 1) return;
-          if (typeof node.matches === 'function' && node.matches('[data-cc-app-store]')) {
+          if (typeof node.matches === 'function' && node.matches(APP_STORE_SELECTOR)) {
             configureAppleCampaignLink(node, config);
           }
           if (typeof node.querySelectorAll === 'function') {
-            var nestedLinks = node.querySelectorAll('[data-cc-app-store]');
+            var nestedLinks = node.querySelectorAll(APP_STORE_SELECTOR);
             Array.prototype.forEach.call(nestedLinks, function (nestedLink) {
               configureAppleCampaignLink(nestedLink, config);
             });
@@ -168,6 +173,46 @@
     return false;
   }
 
+  function observePricingSection() {
+    if (pricingViewTracked || pricingObserver) return true;
+    if (typeof global.IntersectionObserver !== 'function') return false;
+
+    var pricingSection = document.getElementById('pricing');
+    if (!pricingSection) return false;
+
+    pricingObserver = new global.IntersectionObserver(
+      function (entries) {
+        Array.prototype.forEach.call(entries, function (entry) {
+          if (pricingViewTracked || !entry.isIntersecting || entry.intersectionRatio < 0.25) return;
+          pricingViewTracked = true;
+          pricingObserver.disconnect();
+          pricingObserver = null;
+          trackCadetCatchEvent('pricing_view', {
+            section_id: 'pricing',
+            visibility_threshold_percent: 25,
+          });
+        });
+      },
+      { threshold: [0.25] },
+    );
+    pricingObserver.observe(pricingSection);
+    return true;
+  }
+
+  function startPricingObservation() {
+    if (observePricingSection()) return;
+    if (pricingMutationObserver || typeof global.MutationObserver !== 'function') return;
+
+    var root = document.documentElement || document.body;
+    if (!root) return;
+    pricingMutationObserver = new global.MutationObserver(function () {
+      if (!observePricingSection()) return;
+      pricingMutationObserver.disconnect();
+      pricingMutationObserver = null;
+    });
+    pricingMutationObserver.observe(root, { childList: true, subtree: true });
+  }
+
   global.CadetCatchAnalytics = Object.freeze({
     track: trackCadetCatchEvent,
     attribution: readAttribution,
@@ -177,7 +222,7 @@
     'click',
     function (event) {
       var target = event.target && event.target.closest
-        ? event.target.closest('[data-cc-app-store]')
+        ? event.target.closest(APP_STORE_SELECTOR)
         : null;
       if (!target) return;
 
@@ -186,13 +231,18 @@
       }
 
       trackCadetCatchEvent('app_store_click', {
-        link_location: target.getAttribute('data-cc-link-location') || 'unknown',
+        link_location:
+          target.getAttribute('data-cc-link-location') ||
+          target.getAttribute('data-analytics-label') ||
+          'unknown',
         link_url: target.href || '',
         transport_type: 'beacon',
       });
     },
     true,
   );
+
+  startPricingObservation();
 
   fetch('/analytics-config.json', { cache: 'no-store' })
     .then(function (response) {
