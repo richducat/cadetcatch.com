@@ -1,0 +1,4 @@
+body{font-family:var(--font-body);color:var(--text-body);background:var(--surface-page);margin:0;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--font-display);color:var(--text-heading);text-transform:uppercase;letter-spacing:var(--track-display);line-height:var(--leading-display);font-weight:var(--weight-display);margin:0}
+a{color:var(--link);text-decoration:none}a:hover{color:var(--link-hover);text-decoration:underline}
+::selection{background:var(--cga-gold-400);color:var(--cga-navy-900)}

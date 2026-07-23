@@ -1,0 +1,16 @@
+:root{
+/* Academy core */
+--cga-navy-900:#0F1F38;--cga-navy-800:#16294A;--cga-navy-700:#1C3455;--cga-navy-600:#223C70;--cga-navy-500:#2C4A85;
+--cga-gold-600:#D98E0B;--cga-gold-500:#F2A31D;--cga-gold-400:#F7B948;--cga-gold-100:#FDF0D5;
+/* USCG service colors (racing stripe) */
+--uscg-blue:#006BA6;--uscg-red:#E03C31;
+/* Neutrals (cool, blue-cast) */
+--slate-900:#1A2331;--slate-700:#3A4A5F;--slate-500:#64748B;--slate-300:#C3CDD9;--slate-200:#DDE4EC;--slate-100:#EEF2F6;--slate-50:#F7F9FB;--white:#FFFFFF;
+/* Semantic status */
+--success:#2E7D4F;--warning:#B96A00;--danger:#B3251E;--info:#006BA6;
+/* Aliases */
+--surface-page:var(--white);--surface-muted:var(--slate-50);--surface-panel:var(--cga-navy-800);--surface-card:var(--white);
+--text-heading:var(--cga-navy-800);--text-body:var(--slate-700);--text-muted:var(--slate-500);--text-inverse:var(--white);--text-inverse-muted:#B9C6D8;
+--accent:var(--cga-gold-500);--accent-strong:var(--cga-gold-600);--link:var(--uscg-blue);--link-hover:var(--cga-navy-600);
+--border-subtle:var(--slate-200);--border-strong:var(--slate-300);--focus-ring:var(--cga-gold-500);
+}

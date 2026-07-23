@@ -1,94 +1,261 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-        <meta name="eb28-build-id" content="2026-07-15T17-50-00Z-989d8becbf" />
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-    <meta http-equiv="Pragma" content="no-cache" />
-    <meta http-equiv="Expires" content="0" />
-<title>CadetCatch — Find the Cadet Photo You Have Been Waiting For</title>
-    <meta name="description" content="CadetCatch helps Coast Guard Academy parents find a son or daughter in large event-photo collections using one clear reference photo, then review and save likely matches on iPhone." />
-    <meta name="theme-color" content="#061411" />
-    <meta name="color-scheme" content="light" />
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-    <link rel="canonical" href="https://cadetcatch.com/" />
-    <meta property="og:locale" content="en_US" />
-    <meta property="og:site_name" content="CadetCatch" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="CadetCatch — Find the Cadet Photo You Have Been Waiting For" />
-    <meta property="og:description" content="CadetCatch helps Coast Guard Academy parents find a son or daughter in large event-photo collections using one clear reference photo, then review and save likely matches on iPhone." />
-    <meta property="og:url" content="https://cadetcatch.com/" />
-    <meta property="og:image" content="https://cadetcatch.com/img/find-cadet-photos.png" />
-    <meta property="og:image:alt" content="CadetCatch — Find the Cadet Photo You Have Been Waiting For" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="CadetCatch — Find the Cadet Photo You Have Been Waiting For" />
-    <meta name="twitter:description" content="CadetCatch helps Coast Guard Academy parents find a son or daughter in large event-photo collections using one clear reference photo, then review and save likely matches on iPhone." />
-    <meta name="twitter:image" content="https://cadetcatch.com/img/find-cadet-photos.png" />
-    <script type="application/ld+json">[{"@context":"https://schema.org","@type":"Organization","@id":"https://eb28.co/#organization","name":"EB28","url":"https://eb28.co","logo":"https://eb28.co/favicon.svg"},{"@context":"https://schema.org","@type":"SoftwareApplication","name":"CadetCatch","applicationCategory":"LifestyleApplication","operatingSystem":"iOS","offers":{"@type":"Offer","name":"Family Monthly","price":"12.99","priceCurrency":"USD","description":"Auto-renewing monthly subscription. Free to download.","url":"https://apps.apple.com/us/app/cadetcatch/id6769565852"},"url":"https://apps.apple.com/us/app/cadetcatch/id6769565852","image":"https://cadetcatch.com/img/find-cadet-photos.png","description":"CadetCatch helps Coast Guard Academy parents search large event-photo collections with one clear cadet photo, review likely facial matches, and save the moments they recognize.","provider":{"@id":"https://eb28.co/#organization"}}]</script>
-<link rel="preload" as="image" href="/img/start-with-one-photo.png" fetchpriority="high" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <script>
-      window.addEventListener('load', function () {
-        [
-          'https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Sora:wght@500;700;800&family=Space+Grotesk:wght@400;500;700&display=swap',
-          'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap',
-        ].forEach(function (href) {
-          var link = document.createElement('link');
-          link.rel = 'stylesheet';
-          link.href = href;
-          document.head.appendChild(link);
-        });
-      });
-    </script>
-    <noscript>
-      <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Sora:wght@500;700;800&family=Space+Grotesk:wght@400;500;700&display=swap"
-      />
-      <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
-      />
-    </noscript>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CadetCatch — Find Your Cadet in Thousands of Photos</title>
+<meta name="description" content="Upload one clear photo and let CadetCatch rank likely matches across Coast Guard Academy event-photo collections." />
+<link rel="canonical" href="https://cadetcatch.com/" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="stylesheet" href="/site-responsive.css" />
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
 
-    <style>
-      html,
-      body,
-      #root {
-        min-height: 100%;
-        margin: 0;
-        background: #000b12;
-      }
 
-      body {
-        overflow-x: hidden;
-      }
+<link rel="stylesheet" href="/_ds/uscga-design-system-12503736-1d00-466b-9c41-fce90bdde8cd/tokens/fonts.css">
+<link rel="stylesheet" href="/_ds/uscga-design-system-12503736-1d00-466b-9c41-fce90bdde8cd/tokens/colors.css">
+<link rel="stylesheet" href="/_ds/uscga-design-system-12503736-1d00-466b-9c41-fce90bdde8cd/tokens/typography.css">
+<link rel="stylesheet" href="/_ds/uscga-design-system-12503736-1d00-466b-9c41-fce90bdde8cd/tokens/spacing.css">
+<link rel="stylesheet" href="/_ds/uscga-design-system-12503736-1d00-466b-9c41-fce90bdde8cd/tokens/effects.css">
+<link rel="stylesheet" href="/_ds/uscga-design-system-12503736-1d00-466b-9c41-fce90bdde8cd/tokens/base.css">
+<link rel="stylesheet" href="/_ds/uscga-design-system-12503736-1d00-466b-9c41-fce90bdde8cd/styles.css">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--white);font-family:var(--font-body);color:var(--text-body)}
+a{color:var(--uscg-blue)} a:hover{color:var(--cga-navy-600)}
+details summary::-webkit-details-marker{display:none}
+</style>
 
-    </style>
-    <script type="module" crossorigin src="/assets/index-CfJSUKHP.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-DHp2y0bZ.css">
-  </head>
-  <body>
-    <div id="root"></div>
-    <script data-analytics-site="cadetcatch" src="/site-analytics.js?v=20260715-meta-launch"></script>
-    <noscript>
-      <main data-noscript-site="cadetcatch" style="padding: 32px; font-family: Arial, sans-serif; background: #f8fafc; color: #0f172a;">
-        <h1>CadetCatch</h1>
-        <p>Find Coast Guard Academy cadet photos faster and review possible matches yourself.</p>
-        <nav aria-label="CadetCatch resources">
-          <ul>
-            <li><a href="/">CadetCatch home</a></li>
-            <li><a href="/swab-summer-photos/">Swab Summer photo guide</a></li>
-            <li><a href="/support/">Support</a></li>
-            <li><a href="/privacy/">Privacy</a></li>
-            <li><a href="https://apps.apple.com/us/app/cadetcatch/id6769565852">Download on the App Store</a></li>
-          </ul>
-        </nav>
-        <p>CadetCatch is independent and is not affiliated with USCGA, USCG, or DHS.</p>
-      </main>
-    </noscript>
-  </body>
+
+<div id="main-content" role="main" data-screen-label="Home" style="min-width:960px">
+
+<!-- NAV -->
+<div style="position:sticky;top:0;z-index:50;background:var(--white);border-bottom:1px solid var(--border-subtle)">
+  <div style="max-width:1200px;margin:0 auto;padding:0 24px;height:76px;display:flex;align-items:center;gap:32px">
+    <a href="/" style="display:flex;align-items:center;gap:12px;text-decoration:none">
+      <img src="https://cadetcatch.com/img/cadetcatch-icon.png" alt="CadetCatch app icon" style="width:40px;height:40px;border-radius:10px">
+      <span style="font:600 22px var(--font-display);text-transform:uppercase;letter-spacing:.04em;color:var(--cga-navy-800)">CadetCatch</span>
+    </a>
+    <div style="display:flex;align-items:center;gap:28px;margin-left:auto">
+      <a href="/swab-summer-photos/" style="font:600 13px var(--font-body);letter-spacing:.06em;text-transform:uppercase;color:var(--cga-navy-800);text-decoration:none">Swab Summer Guide</a>
+      <a href="#pricing" style="font:600 13px var(--font-body);letter-spacing:.06em;text-transform:uppercase;color:var(--cga-navy-800);text-decoration:none">Pricing</a>
+      <a href="/support/" style="font:600 13px var(--font-body);letter-spacing:.06em;text-transform:uppercase;color:var(--cga-navy-800);text-decoration:none">Support</a>
+      <a class="cc-button cc-button--primary cc-button--sm" href="https://apps.apple.com/us/app/cadetcatch/id6769565852" data-cc-app-store data-analytics-event="app_store_click">Download Free</a>
+    </div>
+  </div>
+</div>
+
+<!-- HERO -->
+<div style="background:var(--cga-navy-900)">
+  <div style="max-width:1200px;margin:0 auto;padding:88px 24px 0;display:grid;grid-template-columns:1.15fr .85fr;gap:64px;align-items:center">
+    <div style="padding-bottom:88px">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:24px">
+        <span style="width:34px;height:3px;background:var(--cga-gold-500)"></span>
+        <span style="font:700 13px var(--font-body);letter-spacing:.18em;text-transform:uppercase;color:var(--cga-gold-400)">Built for Coast Guard Academy families</span>
+      </div>
+      <h1 style="margin:0 0 24px;font:600 var(--display-xl)/1.05 var(--font-display);letter-spacing:.02em;text-transform:uppercase;color:var(--white);text-wrap:pretty">Stop scrolling thousands of photos. <span style="color:var(--cga-gold-500)">One picture finds your cadet.</span></h1>
+      <p style="margin:0 0 36px;font:18px/1.6 var(--font-body);color:var(--text-inverse-muted);max-width:52ch;text-wrap:pretty">Every photo drop means hours of squinting at identical haircuts. Upload one clear photo of your cadet and CadetCatch sorts the entire collection for you — turning thousands of images into a ranked shortlist you can review in minutes.</p>
+      <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-bottom:20px">
+        <a class="cc-button cc-button--primary cc-button--lg" href="https://apps.apple.com/us/app/cadetcatch/id6769565852" data-cc-app-store data-analytics-event="app_store_click">Download on the App Store</a>
+        <a class="cc-button cc-button--inverse cc-button--lg" href="#how">See how it works</a>
+      </div>
+      <p style="margin:0;font:14px/1.5 var(--font-body);color:var(--text-inverse-muted)">iPhone · Free download · One-time options from $1.99</p>
+    </div>
+    <div style="align-self:end;display:flex;justify-content:center">
+      <img src="https://cadetcatch.com/img/review-photo-finds.png" alt="CadetCatch iPhone screen showing likely photo matches" style="display:block;width:100%;max-width:360px;border-radius:24px 24px 0 0;box-shadow:0 24px 48px rgba(15,31,56,.4)">
+    </div>
+  </div>
+</div>
+<!-- racing stripe -->
+<div style="height:12px;display:flex;overflow:hidden">
+  <div style="flex:1;background:var(--cga-navy-900)"></div>
+  <div style="width:26px;background:var(--uscg-blue);transform:skewX(-26deg);transform-origin:top"></div>
+  <div style="width:22px;background:var(--cga-navy-900);transform:skewX(-26deg);transform-origin:top"></div>
+  <div style="width:110px;background:var(--uscg-red);transform:skewX(-26deg);transform-origin:top"></div>
+  <div style="width:80px;background:var(--cga-navy-900)"></div>
+</div>
+
+<!-- TIME SAVED STRIP -->
+<div style="background:var(--white);border-bottom:1px solid var(--border-subtle)">
+  <div style="max-width:1200px;margin:0 auto;padding:40px 24px;display:grid;grid-template-columns:repeat(3,1fr);gap:32px;text-align:center">
+    <div>
+      <div style="font:600 40px/1 var(--font-display);color:var(--cga-navy-800)">1 photo</div>
+      <div style="font:14px/1.5 var(--font-body);color:var(--text-muted);margin-top:6px">is all it takes — one clear shot of your cadet</div>
+    </div>
+    <div style="border-left:1px solid var(--border-subtle);border-right:1px solid var(--border-subtle)">
+      <div style="font:600 40px/1 var(--font-display);color:var(--cga-navy-800)">Thousands</div>
+      <div style="font:14px/1.5 var(--font-body);color:var(--text-muted);margin-top:6px">of indexed event photos searched automatically</div>
+    </div>
+    <div>
+      <div style="font:600 40px/1 var(--font-display);color:var(--cga-navy-800)">Minutes</div>
+      <div style="font:14px/1.5 var(--font-body);color:var(--text-muted);margin-top:6px">to review a ranked shortlist instead of hours of scrolling</div>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div id="how" style="background:var(--white)">
+  <div style="max-width:1200px;margin:0 auto;padding:96px 24px">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
+      <span style="width:34px;height:3px;background:var(--cga-gold-500)"></span>
+      <span style="font:700 13px var(--font-body);letter-spacing:.18em;text-transform:uppercase;color:var(--cga-navy-600)">How it works</span>
+    </div>
+    <h2 style="margin:0 0 56px;font:600 var(--display-lg)/1.05 var(--font-display);letter-spacing:.02em;text-transform:uppercase;color:var(--text-heading);max-width:26ch;text-wrap:pretty">Your time goes to the moments, not the search</h2>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:40px">
+      <div style="border-top:3px solid var(--cga-gold-500);padding-top:24px">
+        <div style="font:600 52px/1 var(--font-display);color:var(--cga-gold-500);margin-bottom:16px">01</div>
+        <h3 style="margin:0 0 10px;font:600 22px/1.2 var(--font-display);text-transform:uppercase;letter-spacing:.02em;color:var(--text-heading)">Upload one photo</h3>
+        <p style="margin:0;font:16px/1.6 var(--font-body);color:var(--text-body)">Pick one clear, front-facing photo of your cadet from your iPhone. That's the whole setup — no forms, no account.</p>
+      </div>
+      <div style="border-top:3px solid var(--cga-gold-500);padding-top:24px">
+        <div style="font:600 52px/1 var(--font-display);color:var(--cga-gold-500);margin-bottom:16px">02</div>
+        <h3 style="margin:0 0 10px;font:600 22px/1.2 var(--font-display);text-transform:uppercase;letter-spacing:.02em;color:var(--text-heading)">CadetCatch does the scrolling</h3>
+        <p style="margin:0;font:16px/1.6 var(--font-body);color:var(--text-body)">Facial-similarity search compares that one photo against every face in the indexed event-photo collection and ranks the likely matches.</p>
+      </div>
+      <div style="border-top:3px solid var(--cga-gold-500);padding-top:24px">
+        <div style="font:600 52px/1 var(--font-display);color:var(--cga-gold-500);margin-bottom:16px">03</div>
+        <h3 style="margin:0 0 10px;font:600 22px/1.2 var(--font-display);text-transform:uppercase;letter-spacing:.02em;color:var(--text-heading)">Review and save</h3>
+        <p style="margin:0;font:16px/1.6 var(--font-body);color:var(--text-body)">You review a short list of likely matches, recognize the face you know, and save the real finds to your Photos library. You always make the final call.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- GUIDE PROMO -->
+<div style="background:var(--cga-navy-800);position:relative;overflow:hidden">
+  <img src="/assets/photo-ceremony.png" alt="Cadets in formation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.28">
+  <div style="position:absolute;inset:0;background:linear-gradient(90deg, rgba(15,31,56,.92) 35%, rgba(15,31,56,.55))"></div>
+  <div style="position:relative;max-width:1200px;margin:0 auto;padding:88px 24px;display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:center">
+    <div>
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
+        <span style="width:34px;height:3px;background:var(--cga-gold-500)"></span>
+        <span style="font:700 13px var(--font-body);letter-spacing:.18em;text-transform:uppercase;color:var(--cga-gold-400)">Free family guide</span>
+      </div>
+      <h2 style="margin:0 0 16px;font:600 var(--display-lg)/1.05 var(--font-display);letter-spacing:.02em;text-transform:uppercase;color:var(--white);text-wrap:pretty">Know where Swab Summer photos actually post</h2>
+      <p style="margin:0 0 32px;font:17px/1.6 var(--font-body);color:var(--text-inverse-muted);max-width:56ch">Official releases, volunteer photographers, class groups, alumni galleries — our guide maps every source families follow, with the 2026 timeline and spotting tips from parents who've done it.</p>
+      <a class="cc-button cc-button--primary cc-button--230px,46px" href="/swab-summer-photos/">Read the guide →</a>
+    </div>
+    <div></div>
+  </div>
+</div>
+
+<!-- PRICING -->
+
+<div id="pricing" style="background:var(--white)">
+  <div style="max-width:1200px;margin:0 auto;padding:96px 24px">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
+      <span style="width:34px;height:3px;background:var(--cga-gold-500)"></span>
+      <span style="font:700 13px var(--font-body);letter-spacing:.18em;text-transform:uppercase;color:var(--cga-navy-600)">Pricing</span>
+    </div>
+    <h2 style="margin:0 0 12px;font:600 var(--display-lg)/1.05 var(--font-display);letter-spacing:.02em;text-transform:uppercase;color:var(--text-heading)">Free to download. Pay only when you find them.</h2>
+    <p style="margin:0 0 48px;font:16px/1.6 var(--font-body);color:var(--text-muted)">All purchases are processed by Apple. No account required to start.</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:stretch">
+      <div style="border:1px solid var(--border-subtle);border-radius:16px;padding:36px 32px;display:flex;flex-direction:column;gap:12px">
+        <div style="font:700 13px var(--font-body);letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted)">One-Time Photo Check</div>
+        <div style="font:600 44px/1 var(--font-display);color:var(--cga-navy-800)">$1.99</div>
+        <p style="margin:0;font:15px/1.6 var(--font-body);color:var(--text-body);flex:1">Run one full search of the indexed collection against your cadet's reference photo.</p>
+        <div><a class="cc-button cc-button--outline cc-button--sm" href="https://apps.apple.com/us/app/cadetcatch/id6769565852" data-cc-app-store data-analytics-event="app_store_click">Get the app</a></div>
+      </div>
+      <div style="background:var(--cga-navy-800);border-radius:16px;padding:36px 32px;display:flex;flex-direction:column;gap:12px;position:relative">
+        <div style="position:absolute;top:-14px;left:32px"><span class="cc-badge">Most popular</span></div>
+        <div style="font:700 13px var(--font-body);letter-spacing:.12em;text-transform:uppercase;color:var(--cga-gold-400)">Family Monthly</div>
+        <div style="font:600 44px/1 var(--font-display);color:var(--white)">$12.99<span style="font:400 16px var(--font-body);color:var(--text-inverse-muted)">/month</span></div>
+        <p style="margin:0;font:15px/1.6 var(--font-body);color:var(--text-inverse-muted);flex:1">Unlimited searches and photo unlocks all summer, plus spouse and family access invites. Cancel anytime.</p>
+        <div><a class="cc-button cc-button--primary cc-button--sm" href="https://apps.apple.com/us/app/cadetcatch/id6769565852" data-cc-app-store data-analytics-event="app_store_click">Start monthly</a></div>
+      </div>
+      <div style="border:1px solid var(--border-subtle);border-radius:16px;padding:36px 32px;display:flex;flex-direction:column;gap:12px">
+        <div style="font:700 13px var(--font-body);letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted)">Unlock One Photo</div>
+        <div style="font:600 44px/1 var(--font-display);color:var(--cga-navy-800)">$1.99</div>
+        <p style="margin:0;font:15px/1.6 var(--font-body);color:var(--text-body);flex:1">Save a single matched photo you recognize, full resolution, straight to your iPhone.</p>
+        <div><a class="cc-button cc-button--outline cc-button--sm" href="https://apps.apple.com/us/app/cadetcatch/id6769565852" data-cc-app-store data-analytics-event="app_store_click">Get the app</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- FAQ -->
+<div style="background:var(--slate-50)">
+  <div style="max-width:840px;margin:0 auto;padding:96px 24px">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
+      <span style="width:34px;height:3px;background:var(--cga-gold-500)"></span>
+      <span style="font:700 13px var(--font-body);letter-spacing:.18em;text-transform:uppercase;color:var(--cga-navy-600)">FAQ</span>
+    </div>
+    <h2 style="margin:0 0 40px;font:600 var(--display-lg)/1.05 var(--font-display);letter-spacing:.02em;text-transform:uppercase;color:var(--text-heading)">Questions families ask</h2>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <details style="background:var(--white);border:1px solid var(--border-subtle);border-radius:16px;padding:20px 24px">
+        <summary style="cursor:pointer;font:700 16px var(--font-body);color:var(--cga-navy-800);list-style:none">How does the photo matching actually work?</summary>
+        <p style="margin:12px 0 0;font:15px/1.6 var(--font-body);color:var(--text-body)">CadetCatch uses facial-similarity search: it compares one clear photo of your cadet with faces in the indexed event-photo collection and ranks likely matches. It suggests — you decide. It never guarantees an identity or decides who is in a photo.</p>
+      </details>
+      <details style="background:var(--white);border:1px solid var(--border-subtle);border-radius:16px;padding:20px 24px">
+        <summary style="cursor:pointer;font:700 16px var(--font-body);color:var(--cga-navy-800);list-style:none">How much time does it really save?</summary>
+        <p style="margin:12px 0 0;font:15px/1.6 var(--font-body);color:var(--text-body)">A big photo drop can run to hundreds or thousands of images — and after Day One haircuts, every face looks alike. Instead of opening each one, you review a ranked shortlist. Most families go from a fresh gallery to saved finds in minutes.</p>
+      </details>
+      <details style="background:var(--white);border:1px solid var(--border-subtle);border-radius:16px;padding:20px 24px">
+        <summary style="cursor:pointer;font:700 16px var(--font-body);color:var(--cga-navy-800);list-style:none">What happens to the photo I upload?</summary>
+        <p style="margin:12px 0 0;font:15px/1.6 var(--font-body);color:var(--text-body)">Your cadet's profile stays on your device. The reference photo is sent securely to the search service only to find matches — never used for advertising or tracking. Details in our <a href="/privacy/">privacy policy</a>.</p>
+      </details>
+      <details style="background:var(--white);border:1px solid var(--border-subtle);border-radius:16px;padding:20px 24px">
+        <summary style="cursor:pointer;font:700 16px var(--font-body);color:var(--cga-navy-800);list-style:none">What does it cost?</summary>
+        <p style="margin:12px 0 0;font:15px/1.6 var(--font-body);color:var(--text-body)">The app is free to download. A one-time photo check or single photo unlock is $1.99, and Family Monthly is $12.99/month with unlimited searches and family invites. Purchases go through Apple.</p>
+      </details>
+      <details style="background:var(--white);border:1px solid var(--border-subtle);border-radius:16px;padding:20px 24px">
+        <summary style="cursor:pointer;font:700 16px var(--font-body);color:var(--cga-navy-800);list-style:none">Can my spouse and family use it too?</summary>
+        <p style="margin:12px 0 0;font:15px/1.6 var(--font-body);color:var(--text-body)">Yes — Family Monthly includes spouse, family, and cadet access invites, delivered by email and redeemed with the invited address.</p>
+      </details>
+      <details style="background:var(--white);border:1px solid var(--border-subtle);border-radius:16px;padding:20px 24px">
+        <summary style="cursor:pointer;font:700 16px var(--font-body);color:var(--cga-navy-800);list-style:none">Is CadetCatch affiliated with the Academy?</summary>
+        <p style="margin:12px 0 0;font:15px/1.6 var(--font-body);color:var(--text-body)">No. CadetCatch is an independent family resource and is not affiliated with, endorsed by, or connected to USCGA, the U.S. Coast Guard, or DHS.</p>
+      </details>
+    </div>
+  </div>
+</div>
+
+<!-- CTA BAND -->
+<div style="background:var(--cga-navy-900);position:relative;overflow:hidden">
+  <img src="/assets/photo-hero-hats.png" alt="Graduation hat toss" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.25">
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(15,31,56,.6), rgba(15,31,56,.92))"></div>
+  <div style="position:relative;max-width:840px;margin:0 auto;padding:104px 24px;text-align:center">
+    <h2 style="margin:0 0 16px;font:600 var(--display-lg)/1.05 var(--font-display);letter-spacing:.02em;text-transform:uppercase;color:var(--white);text-wrap:pretty">Spend your summer finding moments, not opening images</h2>
+    <p style="margin:0 0 36px;font:17px/1.6 var(--font-body);color:var(--text-inverse-muted)">Download CadetCatch free, add one clear photo, and turn the next photo drop into a five-minute search.</p>
+    <a class="cc-button cc-button--primary cc-button--lg" href="https://apps.apple.com/us/app/cadetcatch/id6769565852" data-cc-app-store data-analytics-event="app_store_click">Download on the App Store</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div style="background:var(--cga-navy-900);border-top:3px solid var(--cga-gold-500)">
+  <div style="max-width:1200px;margin:0 auto;padding:64px 24px 40px;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:48px">
+    <div>
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
+        <img src="https://cadetcatch.com/img/cadetcatch-icon.png" alt="" style="width:36px;height:36px;border-radius:9px">
+        <span style="font:600 20px var(--font-display);text-transform:uppercase;letter-spacing:.04em;color:var(--white)">CadetCatch</span>
+      </div>
+      <p style="margin:0;font:14px/1.6 var(--font-body);color:var(--text-inverse-muted);max-width:40ch">iPhone app for Academy families. One clear photo in, likely event-photo matches out.</p>
+    </div>
+    <div>
+      <div style="font:700 12px var(--font-body);letter-spacing:.14em;text-transform:uppercase;color:var(--cga-gold-400);margin-bottom:14px">Pages</div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <a href="/swab-summer-photos/" style="font:14px var(--font-body);color:var(--text-inverse-muted);text-decoration:none">Swab Summer photo guide</a>
+        <a href="/support/" style="font:14px var(--font-body);color:var(--text-inverse-muted);text-decoration:none">Support</a>
+        <a href="/privacy/" style="font:14px var(--font-body);color:var(--text-inverse-muted);text-decoration:none">Privacy policy</a>
+        <a href="https://apps.apple.com/us/app/cadetcatch/id6769565852" data-cc-app-store data-analytics-event="app_store_click" style="font:14px var(--font-body);color:var(--text-inverse-muted);text-decoration:none">Download on the App Store</a>
+      </div>
+    </div>
+    <div>
+      <div style="font:700 12px var(--font-body);letter-spacing:.14em;text-transform:uppercase;color:var(--cga-gold-400);margin-bottom:14px">Contact</div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <a href="mailto:support@eb28.co" style="font:14px var(--font-body);color:var(--text-inverse-muted);text-decoration:none">support@eb28.co</a>
+      </div>
+    </div>
+  </div>
+  <div style="max-width:1200px;margin:0 auto;padding:0 24px 40px">
+    <div style="border-top:1px solid rgba(255,255,255,.12);padding-top:24px;font:13px/1.6 var(--font-body);color:var(--text-inverse-muted)">CadetCatch is an independent family resource and is not affiliated with, endorsed by, or connected to the U.S. Coast Guard Academy, the U.S. Coast Guard, or the Department of Homeland Security. © 2026 EB28.</div>
+  </div>
+</div>
+
+</div>
+
+<script data-analytics-site="cadetcatch" src="/site-analytics.js?v=20260723-brand-redesign"></script>
+</body>
 </html>

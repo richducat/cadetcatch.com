@@ -1,0 +1,6 @@
+:root{
+--shadow-card:0 2px 8px rgba(15,31,56,.10);--shadow-raised:0 8px 24px rgba(15,31,56,.16);--shadow-panel:0 12px 40px rgba(15,31,56,.28);
+--ease-standard:cubic-bezier(.2,.6,.2,1);/* @kind other */--dur-fast:120ms;/* @kind other */--dur-med:220ms;/* @kind other */
+--stripe-red:var(--uscg-red);--stripe-blue:var(--uscg-blue);
+--overlay-navy:linear-gradient(180deg,rgba(15,31,56,.15) 0%,rgba(15,31,56,.75) 100%);/* @kind other */
+}

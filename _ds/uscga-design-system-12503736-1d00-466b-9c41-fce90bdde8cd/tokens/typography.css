@@ -1,0 +1,9 @@
+:root{
+--font-display:'Oswald','Arial Narrow',sans-serif;
+--font-body:'Public Sans','Helvetica Neue',Arial,sans-serif;
+--display-xl:clamp(44px,5vw,72px);/* @kind font */--display-lg:44px;--display-md:32px;--display-sm:24px;
+--text-lg:19px;--text-md:16px;--text-sm:14px;--text-xs:12px;
+--leading-display:1.05;--leading-body:1.6;
+--track-display:0.02em;--track-caps:0.08em;--track-wide:0.18em;
+--weight-display:600;--weight-bold:700;--weight-semibold:600;--weight-regular:400;
+}
