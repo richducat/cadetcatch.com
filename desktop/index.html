@@ -1,0 +1,1656 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CadetCatch Desktop — Log In and Find Your Cadet</title>
+    <meta name="description" content="Log in to CadetCatch Desktop with the email connected to your CadetCatch access, then search and review possible photo matches from your computer." />
+    <link rel="canonical" href="https://cadetcatch.com/desktop/" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #eef4fb;
+        --surface: #ffffff;
+        --surface-soft: #f8fbff;
+        --ink: #071426;
+        --navy: #173d72;
+        --navy-dark: #041125;
+        --muted: #64738a;
+        --line: #d7e0ec;
+        --orange: #f2541b;
+        --orange-dark: #d6420c;
+        --green: #1c8f61;
+        --red: #b42318;
+        --shadow: 0 18px 44px rgba(7, 20, 38, 0.11);
+        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+      }
+
+      * { box-sizing: border-box; }
+
+      html { min-height: 100%; }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background:
+          radial-gradient(circle at 18% -10%, rgba(242, 84, 27, 0.16), transparent 34%),
+          linear-gradient(180deg, #f7fbff 0%, var(--bg) 52%, #eaf1fa 100%);
+        color: var(--ink);
+      }
+
+      body,
+      button,
+      input,
+      select {
+        font: inherit;
+      }
+
+      button,
+      input,
+      select {
+        letter-spacing: 0;
+      }
+
+      button {
+        border: 0;
+        cursor: pointer;
+      }
+
+      button:disabled {
+        cursor: not-allowed;
+        opacity: 0.62;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .app-shell {
+        display: grid;
+        grid-template-columns: 240px minmax(0, 1fr);
+        min-height: 100vh;
+      }
+
+      .access-guide {
+        align-items: center;
+        background: var(--navy-dark);
+        color: white;
+        display: flex;
+        gap: 18px;
+        justify-content: space-between;
+        padding: 15px 24px;
+      }
+
+      .access-guide-copy {
+        display: grid;
+        gap: 4px;
+      }
+
+      .access-guide-copy strong {
+        font-size: 15px;
+      }
+
+      .access-guide-copy span {
+        color: #c7d4e6;
+        font-size: 13px;
+        line-height: 1.45;
+      }
+
+      .access-guide-actions {
+        display: flex;
+        flex-shrink: 0;
+        gap: 10px;
+      }
+
+      .access-guide a {
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 900;
+        padding: 11px 17px;
+        text-decoration: none;
+      }
+
+      .access-guide .login-link {
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        color: white;
+      }
+
+      .access-guide .buy-link {
+        background: var(--orange);
+        color: white;
+      }
+
+      .sidebar {
+        background: rgba(255, 255, 255, 0.78);
+        border-right: 1px solid rgba(215, 224, 236, 0.86);
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        padding: 28px 18px;
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        backdrop-filter: blur(18px);
+      }
+
+      .brand-mark {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 0 4px;
+      }
+
+      .logo {
+        align-items: center;
+        background: var(--navy);
+        border-radius: 8px;
+        color: white;
+        display: grid;
+        font-size: 19px;
+        font-weight: 950;
+        height: 46px;
+        justify-items: center;
+        line-height: 1;
+        width: 46px;
+      }
+
+      .brand-kicker {
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 850;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .brand-name {
+        color: var(--navy-dark);
+        font-size: 21px;
+        font-weight: 950;
+        line-height: 1;
+        margin-top: 3px;
+      }
+
+      .nav {
+        display: grid;
+        gap: 8px;
+      }
+
+      .nav-button {
+        align-items: center;
+        background: transparent;
+        border-radius: 8px;
+        color: var(--navy-dark);
+        display: flex;
+        gap: 12px;
+        min-height: 50px;
+        padding: 0 12px;
+        text-align: left;
+        width: 100%;
+      }
+
+      .nav-button[aria-selected="true"] {
+        background: #eef4fb;
+        color: var(--orange);
+        box-shadow: inset 0 0 0 1px rgba(215, 224, 236, 0.92);
+      }
+
+      .nav-icon {
+        align-items: center;
+        display: inline-grid;
+        height: 26px;
+        justify-items: center;
+        width: 26px;
+      }
+
+      .nav-icon svg {
+        height: 24px;
+        stroke: currentColor;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 2.5;
+        width: 24px;
+      }
+
+      .nav-text {
+        font-size: 15px;
+        font-weight: 900;
+      }
+
+      .sidebar-status {
+        background: #f7fbff;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        display: grid;
+        gap: 6px;
+        margin-top: auto;
+        padding: 12px;
+      }
+
+      .sidebar-status strong {
+        color: var(--navy-dark);
+        font-size: 14px;
+      }
+
+      .sidebar-status span {
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 700;
+        line-height: 1.32;
+      }
+
+      .content {
+        min-width: 0;
+        padding: 32px clamp(18px, 4vw, 48px) 42px;
+      }
+
+      .topbar {
+        align-items: center;
+        display: flex;
+        gap: 18px;
+        justify-content: space-between;
+        margin: 0 auto 24px;
+        max-width: 1180px;
+      }
+
+      .page-title {
+        margin: 0;
+        color: var(--navy-dark);
+        font-size: clamp(38px, 6vw, 64px);
+        font-weight: 950;
+        letter-spacing: 0;
+        line-height: 0.94;
+      }
+
+      .top-actions {
+        align-items: center;
+        display: flex;
+        gap: 10px;
+      }
+
+      .pill {
+        align-items: center;
+        background: #e5edf8;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        color: var(--navy);
+        display: inline-flex;
+        font-size: 13px;
+        font-weight: 900;
+        gap: 8px;
+        min-height: 38px;
+        padding: 0 13px;
+        white-space: nowrap;
+      }
+
+      .pill.ok {
+        background: #eafff3;
+        border-color: #b9e8ce;
+        color: var(--green);
+      }
+
+      .pill.locked {
+        background: #fff2ed;
+        border-color: #fac8b9;
+        color: var(--orange-dark);
+      }
+
+      .section {
+        display: none;
+        margin: 0 auto;
+        max-width: 1180px;
+      }
+
+      .section.active {
+        display: block;
+      }
+
+      .grid {
+        display: grid;
+        gap: 18px;
+      }
+
+      .home-layout {
+        grid-template-columns: minmax(0, 1.05fr) minmax(340px, 0.95fr);
+        align-items: start;
+      }
+
+      .panel,
+      .card {
+        background: rgba(255, 255, 255, 0.94);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        box-shadow: 0 12px 30px rgba(7, 20, 38, 0.07);
+      }
+
+      .panel {
+        padding: 18px;
+      }
+
+      .hero-card {
+        background: linear-gradient(135deg, var(--navy-dark), #173d72 58%, #315d95);
+        border: 0;
+        color: white;
+        min-height: 220px;
+        overflow: hidden;
+        padding: 26px;
+        position: relative;
+      }
+
+      .hero-card::after {
+        background:
+          radial-gradient(circle, rgba(255, 255, 255, 0.18) 0 2px, transparent 3px),
+          linear-gradient(135deg, rgba(242, 84, 27, 0.38), transparent 42%);
+        background-size: 28px 28px, 100% 100%;
+        content: "";
+        inset: 0;
+        opacity: 0.55;
+        position: absolute;
+      }
+
+      .hero-content {
+        display: grid;
+        gap: 14px;
+        max-width: 660px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero-card h2 {
+        font-size: clamp(36px, 5vw, 58px);
+        font-weight: 950;
+        letter-spacing: 0;
+        line-height: 0.96;
+        margin: 0;
+      }
+
+      .hero-card p {
+        color: rgba(255, 255, 255, 0.84);
+        font-size: 18px;
+        font-weight: 650;
+        line-height: 1.42;
+        margin: 0;
+        max-width: 620px;
+      }
+
+      .metric-row {
+        display: grid;
+        gap: 12px;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .metric {
+        padding: 16px;
+      }
+
+      .metric span {
+        color: var(--muted);
+        display: block;
+        font-size: 13px;
+        font-weight: 850;
+        margin-bottom: 8px;
+      }
+
+      .metric strong {
+        color: var(--navy-dark);
+        font-size: 30px;
+        font-weight: 950;
+      }
+
+      .panel-title {
+        align-items: start;
+        display: flex;
+        gap: 12px;
+        justify-content: space-between;
+        margin-bottom: 14px;
+      }
+
+      .panel-title h2,
+      .panel-title h3 {
+        color: var(--navy-dark);
+        font-size: 26px;
+        font-weight: 950;
+        line-height: 1.05;
+        margin: 0;
+      }
+
+      .panel-title p,
+      .copy {
+        color: var(--muted);
+        font-size: 15px;
+        font-weight: 650;
+        line-height: 1.45;
+        margin: 7px 0 0;
+      }
+
+      .field-stack {
+        display: grid;
+        gap: 13px;
+      }
+
+      label {
+        color: var(--navy);
+        display: grid;
+        font-size: 13px;
+        font-weight: 900;
+        gap: 7px;
+      }
+
+      input,
+      select {
+        background: #fbfdff;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        color: var(--ink);
+        min-height: 48px;
+        outline: none;
+        padding: 0 13px;
+        width: 100%;
+      }
+
+      input:focus,
+      select:focus {
+        border-color: rgba(242, 84, 27, 0.65);
+        box-shadow: 0 0 0 4px rgba(242, 84, 27, 0.12);
+      }
+
+      .button-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .primary-button,
+      .secondary-button,
+      .text-button {
+        align-items: center;
+        border-radius: 8px;
+        display: inline-flex;
+        font-weight: 950;
+        justify-content: center;
+        min-height: 48px;
+        padding: 0 16px;
+      }
+
+      .primary-button {
+        background: var(--orange);
+        color: white;
+      }
+
+      .primary-button:hover:not(:disabled) {
+        background: var(--orange-dark);
+      }
+
+      .secondary-button {
+        background: #e8eff8;
+        color: var(--navy);
+      }
+
+      .text-button {
+        background: transparent;
+        color: var(--orange);
+        padding-inline: 4px;
+      }
+
+      .drop-zone {
+        align-items: center;
+        background: var(--surface-soft);
+        border: 1px dashed #b9c7d8;
+        border-radius: 8px;
+        display: grid;
+        gap: 10px;
+        justify-items: center;
+        min-height: 196px;
+        overflow: hidden;
+        padding: 18px;
+        position: relative;
+        text-align: center;
+      }
+
+      .drop-zone.is-ready {
+        border-style: solid;
+      }
+
+      .drop-zone img {
+        border-radius: 8px;
+        height: 100%;
+        inset: 0;
+        object-fit: cover;
+        position: absolute;
+        width: 100%;
+      }
+
+      .drop-copy {
+        display: grid;
+        gap: 6px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .drop-copy strong {
+        color: var(--navy-dark);
+        font-size: 18px;
+        font-weight: 950;
+      }
+
+      .drop-copy span {
+        color: var(--muted);
+        font-size: 14px;
+        font-weight: 750;
+      }
+
+      .drop-zone.has-image .drop-copy {
+        background: rgba(255, 255, 255, 0.92);
+        border-radius: 8px;
+        padding: 10px 12px;
+      }
+
+      .hidden-file {
+        display: none;
+        height: 1px;
+        overflow: hidden;
+        position: fixed;
+        white-space: nowrap;
+        width: 1px;
+      }
+
+      .segmented {
+        background: #dfe6ef;
+        border-radius: 999px;
+        display: grid;
+        gap: 0;
+        grid-template-columns: repeat(3, 1fr);
+        padding: 4px;
+      }
+
+      .segmented.two {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .segment {
+        background: transparent;
+        border-radius: 999px;
+        color: #1a2636;
+        display: grid;
+        gap: 2px;
+        min-height: 52px;
+        place-items: center;
+        padding: 5px 8px;
+      }
+
+      .segment strong {
+        font-size: 15px;
+        font-weight: 950;
+      }
+
+      .segment span {
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 850;
+      }
+
+      .segment[aria-pressed="true"],
+      .segment[aria-selected="true"] {
+        background: white;
+        box-shadow: 0 2px 10px rgba(7, 20, 38, 0.11);
+        color: var(--orange);
+      }
+
+      .status-box {
+        background: #f8fbff;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        color: var(--muted);
+        font-size: 14px;
+        font-weight: 750;
+        line-height: 1.42;
+        min-height: 50px;
+        padding: 13px;
+      }
+
+      .status-box.ok {
+        background: #effff6;
+        border-color: #bce9cf;
+        color: var(--green);
+      }
+
+      .status-box.error {
+        background: #fff2ee;
+        border-color: #fac8b9;
+        color: var(--red);
+      }
+
+      .photos-toolbar {
+        align-items: center;
+        display: flex;
+        gap: 12px;
+        justify-content: space-between;
+        margin-bottom: 18px;
+      }
+
+      .photos-toolbar .segmented {
+        width: min(100%, 440px);
+      }
+
+      .match-grid {
+        display: grid;
+        gap: 14px;
+        grid-template-columns: repeat(auto-fill, minmax(238px, 1fr));
+      }
+
+      .photo-card {
+        overflow: hidden;
+      }
+
+      .photo-frame {
+        align-items: center;
+        aspect-ratio: 4 / 3;
+        background: #e0e7f0;
+        color: var(--muted);
+        display: grid;
+        font-weight: 900;
+        justify-items: center;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .photo-frame img {
+        height: 100%;
+        object-fit: cover;
+        width: 100%;
+      }
+
+      .reload-photo {
+        background: transparent;
+        color: var(--muted);
+        display: none;
+        font-weight: 900;
+        gap: 6px;
+        justify-items: center;
+        padding: 0;
+      }
+
+      .photo-frame.failed .reload-photo {
+        display: grid;
+      }
+
+      .photo-frame.failed img {
+        display: none;
+      }
+
+      .card-body {
+        display: grid;
+        gap: 10px;
+        padding: 14px;
+      }
+
+      .card-title {
+        color: var(--navy-dark);
+        font-size: 18px;
+        font-weight: 950;
+        line-height: 1.14;
+        margin: 0;
+      }
+
+      .card-meta {
+        color: var(--muted);
+        font-size: 14px;
+        font-weight: 750;
+        margin: 0;
+      }
+
+      .card-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .small-button {
+        align-items: center;
+        background: #edf3fa;
+        border-radius: 8px;
+        color: var(--navy);
+        display: inline-flex;
+        font-size: 13px;
+        font-weight: 950;
+        justify-content: center;
+        min-height: 38px;
+        padding: 0 11px;
+        text-decoration: none;
+      }
+
+      .small-button.primary {
+        background: var(--orange);
+        color: white;
+      }
+
+      .empty-state {
+        align-items: center;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        color: var(--muted);
+        display: grid;
+        gap: 10px;
+        justify-items: center;
+        min-height: 320px;
+        padding: 34px;
+        text-align: center;
+      }
+
+      .empty-state strong {
+        color: var(--navy-dark);
+        font-size: 27px;
+        font-weight: 950;
+      }
+
+      .empty-state p {
+        color: var(--muted);
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 1.42;
+        margin: 0;
+        max-width: 440px;
+      }
+
+      .info-list {
+        display: grid;
+        gap: 12px;
+      }
+
+      .info-item {
+        display: grid;
+        gap: 8px;
+        padding: 18px;
+      }
+
+      .info-item h3 {
+        color: var(--navy-dark);
+        font-size: 22px;
+        font-weight: 950;
+        margin: 0;
+      }
+
+      .info-item p {
+        color: var(--muted);
+        font-size: 16px;
+        font-weight: 650;
+        line-height: 1.48;
+        margin: 0;
+      }
+
+      .mobile-tabs {
+        display: none;
+      }
+
+      @media (max-width: 980px) {
+        .access-guide {
+          align-items: stretch;
+          flex-direction: column;
+          padding: 14px 16px;
+        }
+
+        .access-guide-actions {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .access-guide a {
+          text-align: center;
+        }
+
+        .app-shell {
+          display: block;
+          padding-bottom: 92px;
+        }
+
+        .sidebar {
+          display: none;
+        }
+
+        .content {
+          padding: 24px 16px 28px;
+        }
+
+        .topbar {
+          align-items: flex-start;
+          display: grid;
+        }
+
+        .home-layout {
+          grid-template-columns: 1fr;
+        }
+
+        .metric-row {
+          grid-template-columns: 1fr;
+        }
+
+        .photos-toolbar {
+          display: grid;
+        }
+
+        .mobile-tabs {
+          align-items: center;
+          background: rgba(255, 255, 255, 0.92);
+          border: 1px solid var(--line);
+          border-radius: 8px;
+          bottom: 12px;
+          box-shadow: var(--shadow);
+          display: grid;
+          gap: 2px;
+          grid-template-columns: repeat(5, 1fr);
+          left: 12px;
+          padding: 6px;
+          position: fixed;
+          right: 12px;
+          z-index: 50;
+        }
+
+        .mobile-tab {
+          background: transparent;
+          border-radius: 8px;
+          color: #172234;
+          display: grid;
+          font-size: 12px;
+          font-weight: 950;
+          gap: 3px;
+          min-height: 58px;
+          place-items: center;
+        }
+
+        .mobile-tab svg {
+          height: 22px;
+          stroke: currentColor;
+          stroke-linecap: round;
+          stroke-linejoin: round;
+          stroke-width: 2.5;
+          width: 22px;
+        }
+
+        .mobile-tab[aria-selected="true"] {
+          background: #e8eff8;
+          color: var(--orange);
+        }
+      }
+
+      @media (max-width: 560px) {
+        .page-title {
+          font-size: 46px;
+        }
+
+        .hero-card {
+          padding: 22px;
+        }
+
+        .button-row {
+          display: grid;
+        }
+
+        .primary-button,
+        .secondary-button,
+        .text-button {
+          width: 100%;
+        }
+
+        .match-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="access-guide" aria-label="Desktop access help">
+      <div class="access-guide-copy">
+        <strong>Already have a desktop login? Use your CadetCatch email and password below.</strong>
+        <span>Need a login? Get the iPhone app, start Family Monthly, then request desktop activation through Support.</span>
+      </div>
+      <div class="access-guide-actions">
+        <a class="login-link" href="#email">Log in</a>
+        <a class="buy-link" href="https://apps.apple.com/us/app/cadetcatch/id6769565852" data-cc-app-store>Get access</a>
+      </div>
+    </section>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="CadetCatch navigation">
+        <div class="brand-mark">
+          <div class="logo" aria-hidden="true">CC</div>
+          <div>
+            <div class="brand-kicker">CadetCatch</div>
+            <div class="brand-name">Desktop</div>
+          </div>
+        </div>
+        <nav class="nav" id="desktop-nav"></nav>
+        <div class="sidebar-status">
+          <strong id="side-status-title">Desktop access not checked</strong>
+          <span id="side-status-copy">Use the email and password from your desktop activation.</span>
+        </div>
+      </aside>
+
+      <main class="content">
+        <header class="topbar">
+          <h1 class="page-title" id="page-title">Home</h1>
+          <div class="top-actions">
+            <span class="pill" id="access-pill">Access not checked</span>
+          </div>
+        </header>
+
+        <section class="section active" data-section="home" aria-label="Home">
+          <div class="grid home-layout">
+            <div class="grid">
+              <article class="panel hero-card">
+                <div class="hero-content">
+                  <h2>Good morning.</h2>
+                  <p>Choose one clear photo of your cadet, then CadetCatch will look through event photos for possible matches.</p>
+                </div>
+              </article>
+
+              <div class="metric-row">
+                <article class="card metric">
+                  <span>Possible matches</span>
+                  <strong id="metric-matches">0</strong>
+                </article>
+                <article class="card metric">
+                  <span>Saved</span>
+                  <strong id="metric-saved">0</strong>
+                </article>
+                <article class="card metric">
+                  <span>Desktop access</span>
+                  <strong id="metric-access">--</strong>
+                </article>
+              </div>
+
+              <article class="panel">
+                <div class="panel-title">
+                  <div>
+                    <h2>What makes a good search photo?</h2>
+                    <p>Use a clear single-face photo. Front-facing photos are best, but lower match ranges can help with side angles.</p>
+                  </div>
+                </div>
+                <div class="info-list">
+                  <div class="info-item card">
+                    <h3>One cadet in the photo</h3>
+                    <p>If the photo has multiple people, choose a crop or another picture where only one face is visible.</p>
+                  </div>
+                  <div class="info-item card">
+                    <h3>Review every possible match</h3>
+                    <p>Different angles, hats, and lighting can change results. Check each photo before saving or sharing it.</p>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <aside class="panel" aria-label="Find photos">
+              <div class="panel-title">
+                <div>
+                  <h2>Find photos</h2>
+                  <p>Use the selected cadet photo to look for possible full-photo matches.</p>
+                </div>
+              </div>
+
+              <div class="field-stack">
+                <label>
+                  Account email
+                  <input id="email" type="email" autocomplete="email" placeholder="email@example.com" />
+                </label>
+                <label>
+                  Password
+                  <input id="password" type="password" autocomplete="current-password" placeholder="Desktop password" />
+                </label>
+
+                <div class="button-row">
+                  <button class="secondary-button" id="check-access" type="button">Log In to Desktop</button>
+                </div>
+
+                <div class="status-box" id="status">Enter your CadetCatch desktop email and password. Need a login? Start Family Monthly in the iPhone app, then request desktop activation.</div>
+                <div class="button-row">
+                  <a class="small-button primary" href="https://apps.apple.com/us/app/cadetcatch/id6769565852" target="_blank" rel="noopener noreferrer">Get Family Monthly</a>
+                  <a class="small-button" href="/support/">Request desktop activation</a>
+                </div>
+
+                <label for="file">Cadet photo</label>
+                <button class="drop-zone" id="drop-zone" type="button">
+                  <img id="preview" alt="" hidden />
+                  <span class="drop-copy">
+                    <strong id="drop-title">Choose a cadet photo</strong>
+                    <span id="drop-subtitle">JPG, PNG, HEIC, or HEIF</span>
+                  </span>
+                </button>
+                <input class="hidden-file" id="file" type="file" accept="image/jpeg,image/png,image/heic,image/heif" />
+
+                <div>
+                  <div class="panel-title" style="margin-bottom: 8px;">
+                    <div>
+                      <h3>Match range</h3>
+                      <p id="range-help">Lower finds more possible matches; higher is more exact.</p>
+                    </div>
+                  </div>
+                  <div class="segmented" id="threshold-controls" aria-label="Match range"></div>
+                </div>
+
+                <label>
+                  Max results
+                  <select id="top-k">
+                    <option value="10">10</option>
+                    <option value="25">25</option>
+                    <option value="50" selected>50</option>
+                  </select>
+                </label>
+
+                <div class="button-row">
+                  <button class="primary-button" id="search" type="button">Search Photos</button>
+                  <button class="text-button" id="view-photos" type="button">View Matches</button>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="section" data-section="photos" aria-label="Photos">
+          <div class="photos-toolbar">
+            <div class="segmented two" aria-label="Photo list">
+              <button class="segment" type="button" data-photo-scope="new" aria-selected="true"><strong>New</strong></button>
+              <button class="segment" type="button" data-photo-scope="saved" aria-selected="false"><strong>Saved</strong></button>
+            </div>
+            <span class="pill" id="photo-count">0 photos</span>
+          </div>
+
+          <div class="empty-state" id="empty-state">
+            <strong>No photos ready</strong>
+            <p>Run a photo search from Home after adding a cadet.</p>
+            <button class="primary-button" type="button" data-go-tab="home">Open Home</button>
+          </div>
+          <div class="match-grid" id="results" hidden></div>
+        </section>
+
+        <section class="section" data-section="roster" aria-label="Roster">
+          <div class="grid home-layout">
+            <article class="panel">
+              <div class="panel-title">
+                <div>
+                  <h2>Cadet profile</h2>
+                  <p>Add a clear cadet photo before searching event photos.</p>
+                </div>
+              </div>
+              <div class="drop-zone is-ready" id="roster-preview">
+                <span class="drop-copy">
+                  <strong>No cadet photo selected</strong>
+                  <span>Choose one from Home to get started.</span>
+                </span>
+              </div>
+            </article>
+            <article class="panel">
+              <div class="panel-title">
+                <div>
+                  <h2>Account</h2>
+                  <p>Desktop uses the same account email as CadetCatch on iPhone.</p>
+                </div>
+              </div>
+              <div class="field-stack">
+                <label>
+                  Account email
+                  <input id="email-roster" type="email" autocomplete="email" placeholder="email@example.com" />
+                </label>
+                <label>
+                  Password
+                  <input id="password-roster" type="password" autocomplete="current-password" placeholder="Desktop password" />
+                </label>
+                <button class="secondary-button" type="button" id="check-access-roster">Log In to Desktop</button>
+                <div class="status-box" id="roster-status">Desktop access has not been checked yet.</div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" data-section="info" aria-label="Info">
+          <div class="info-list">
+            <article class="card info-item">
+              <h3>How photo matching works</h3>
+              <p>Choose one clear photo of your cadet. CadetCatch compares it with event photos and shows possible matches for you to review.</p>
+            </article>
+            <article class="card info-item">
+              <h3>Your photo stays focused on search</h3>
+              <p>Your selected cadet photo is used for matching. New event photos are added by the CadetCatch team as they become available.</p>
+            </article>
+            <article class="card info-item">
+              <h3>Review every possible match</h3>
+              <p>Lower match ranges can find more angled photos, but they can also include lookalikes. Check each photo before saving or sharing.</p>
+            </article>
+            <article class="card info-item">
+              <h3>Desktop access</h3>
+              <p>Desktop uses a secure email-and-password login. If you do not have one, start Family Monthly in the iPhone app and request desktop activation through Support.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" data-section="more" aria-label="More">
+          <div class="grid home-layout">
+            <article class="panel">
+              <div class="panel-title">
+                <div>
+                  <h2>Access status</h2>
+                  <p id="more-email">No email saved yet.</p>
+                </div>
+              </div>
+              <div class="status-box" id="more-status">Check access from Home or Roster.</div>
+            </article>
+            <article class="panel">
+              <div class="panel-title">
+                <div>
+                  <h2>Local browser data</h2>
+                  <p>Clears this computer's saved email, matches, and saved photo list.</p>
+                </div>
+              </div>
+              <button class="secondary-button" type="button" id="reset-local">Reset This Browser</button>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <nav class="mobile-tabs" id="mobile-nav" aria-label="CadetCatch tabs"></nav>
+
+    <script data-analytics-site="cadetcatch" src="/site-analytics.js?v=20260728-desktop-restore"></script>
+    <script>
+      const API_BASE = "https://api.cadetcatch.com";
+
+      const STORAGE = {
+        device: "cadetcatch.desktop.deviceID",
+        email: "cadetcatch.desktop.email",
+        matches: "cadetcatch.desktop.matches",
+        saved: "cadetcatch.desktop.saved",
+        threshold: "cadetcatch.desktop.threshold",
+        session: "cadetcatch.desktop.session",
+      };
+
+      const tabs = [
+        { id: "home", title: "Home", icon: "home" },
+        { id: "photos", title: "Photos", icon: "photos" },
+        { id: "roster", title: "Roster", icon: "people" },
+        { id: "info", title: "Info", icon: "info" },
+        { id: "more", title: "More", icon: "more" },
+      ];
+
+      const thresholds = {
+        low: {
+          title: "Low",
+          subtitle: "Broad",
+          minScore: "0.55",
+          help: "Broadest search for side profiles or tough angles. Review these results carefully because lookalikes are more likely.",
+        },
+        medium: {
+          title: "Medium",
+          subtitle: "Balanced",
+          minScore: "0.65",
+          help: "Looks a little wider for different angles, lighting, and expressions while still filtering weaker guesses.",
+        },
+        high: {
+          title: "High",
+          subtitle: "Strict",
+          minScore: "0.80",
+          help: "Shows only the closest-looking photos. Best for clear, front-facing pictures and fewer lookalikes.",
+        },
+      };
+
+      const iconPaths = {
+        home: '<path d="M3 10.8 12 3l9 7.8"/><path d="M5.5 10.5V21h13V10.5"/><path d="M9.2 21v-6.5h5.6V21"/>',
+        photos: '<path d="M4 6.5A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5v11a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 4 17.5z"/><path d="m6.5 17 4-4 2.8 2.8 2.1-2.1 3.1 3.3"/><path d="M9 9.2h.1"/>',
+        people: '<path d="M16 20v-1.5a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4V20"/><path d="M9.5 10.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z"/><path d="M21 20v-1.5a4 4 0 0 0-3-3.87"/><path d="M16.5 3.7a3.5 3.5 0 0 1 0 6.8"/>',
+        info: '<path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z"/><path d="M12 11.5V16"/><path d="M12 8h.01"/>',
+        more: '<path d="M5 12h.01"/><path d="M12 12h.01"/><path d="M19 12h.01"/>',
+      };
+
+      const state = {
+        activeTab: "home",
+        photoScope: "new",
+        accessActive: false,
+        accessPayload: null,
+        sessionToken: sessionStorage.getItem("cadetcatch.desktop.session") || "",
+        selectedFile: null,
+        selectedPreviewURL: "",
+        threshold: localStorage.getItem(STORAGE.threshold) || "high",
+        matches: readJSON(STORAGE.matches, []),
+        savedURLs: new Set(readJSON(STORAGE.saved, [])),
+      };
+
+      const els = {
+        desktopNav: document.getElementById("desktop-nav"),
+        mobileNav: document.getElementById("mobile-nav"),
+        pageTitle: document.getElementById("page-title"),
+        accessPill: document.getElementById("access-pill"),
+        sideStatusTitle: document.getElementById("side-status-title"),
+        sideStatusCopy: document.getElementById("side-status-copy"),
+        email: document.getElementById("email"),
+        emailRoster: document.getElementById("email-roster"),
+        password: document.getElementById("password"),
+        passwordRoster: document.getElementById("password-roster"),
+        checkAccess: document.getElementById("check-access"),
+        checkAccessRoster: document.getElementById("check-access-roster"),
+        status: document.getElementById("status"),
+        rosterStatus: document.getElementById("roster-status"),
+        moreStatus: document.getElementById("more-status"),
+        moreEmail: document.getElementById("more-email"),
+        file: document.getElementById("file"),
+        dropZone: document.getElementById("drop-zone"),
+        preview: document.getElementById("preview"),
+        dropTitle: document.getElementById("drop-title"),
+        dropSubtitle: document.getElementById("drop-subtitle"),
+        rosterPreview: document.getElementById("roster-preview"),
+        thresholdControls: document.getElementById("threshold-controls"),
+        rangeHelp: document.getElementById("range-help"),
+        topK: document.getElementById("top-k"),
+        search: document.getElementById("search"),
+        viewPhotos: document.getElementById("view-photos"),
+        results: document.getElementById("results"),
+        emptyState: document.getElementById("empty-state"),
+        photoCount: document.getElementById("photo-count"),
+        metricMatches: document.getElementById("metric-matches"),
+        metricSaved: document.getElementById("metric-saved"),
+        metricAccess: document.getElementById("metric-access"),
+        resetLocal: document.getElementById("reset-local"),
+      };
+
+      function readJSON(key, fallback) {
+        try {
+          const value = JSON.parse(localStorage.getItem(key) || "null");
+          return value ?? fallback;
+        } catch {
+          return fallback;
+        }
+      }
+
+      function writeJSON(key, value) {
+        localStorage.setItem(key, JSON.stringify(value));
+      }
+
+      function deviceID() {
+        let id = localStorage.getItem(STORAGE.device);
+        if (!id) {
+          id = "desktop-" + crypto.randomUUID();
+          localStorage.setItem(STORAGE.device, id);
+        }
+        return id;
+      }
+
+      function icon(name) {
+        return `<svg viewBox="0 0 24 24" fill="none" aria-hidden="true">${iconPaths[name]}</svg>`;
+      }
+
+      function renderNavigation() {
+        els.desktopNav.innerHTML = tabs.map((tab) => `
+          <button class="nav-button" type="button" data-tab="${tab.id}" aria-selected="${state.activeTab === tab.id}">
+            <span class="nav-icon">${icon(tab.icon)}</span>
+            <span class="nav-text">${tab.title}</span>
+          </button>
+        `).join("");
+
+        els.mobileNav.innerHTML = tabs.map((tab) => `
+          <button class="mobile-tab" type="button" data-tab="${tab.id}" aria-selected="${state.activeTab === tab.id}">
+            ${icon(tab.icon)}
+            <span>${tab.title}</span>
+          </button>
+        `).join("");
+      }
+
+      function renderThresholds() {
+        els.thresholdControls.innerHTML = Object.entries(thresholds).map(([id, config]) => `
+          <button class="segment" type="button" data-threshold="${id}" aria-pressed="${state.threshold === id}">
+            <strong>${config.title}</strong>
+            <span>${config.subtitle}</span>
+          </button>
+        `).join("");
+        els.rangeHelp.textContent = thresholds[state.threshold].help;
+      }
+
+      function setTab(tabID) {
+        state.activeTab = tabID;
+        document.querySelectorAll(".section").forEach((section) => {
+          section.classList.toggle("active", section.dataset.section === tabID);
+        });
+        const tab = tabs.find((item) => item.id === tabID);
+        els.pageTitle.textContent = tab ? tab.title : "Home";
+        renderNavigation();
+        renderPhotos();
+      }
+
+      function currentEmail() {
+        return (els.email.value || els.emailRoster.value || "").trim();
+      }
+
+      function setEmail(value) {
+        els.email.value = value;
+        els.emailRoster.value = value;
+        if (value) localStorage.setItem(STORAGE.email, value);
+        els.moreEmail.textContent = value ? value : "No email saved yet.";
+      }
+
+      function currentPassword() {
+        return els.password.value || els.passwordRoster.value || "";
+      }
+
+      function setPassword(value) {
+        els.password.value = value;
+        els.passwordRoster.value = value;
+      }
+
+      function setStatus(message, kind = "") {
+        for (const box of [els.status, els.rosterStatus, els.moreStatus]) {
+          box.textContent = message;
+          box.className = `status-box ${kind}`.trim();
+        }
+      }
+
+      function setAccess(active, payload = null) {
+        state.accessActive = active;
+        state.accessPayload = payload;
+        els.accessPill.textContent = active ? "Desktop access active" : "Desktop access locked";
+        els.accessPill.className = `pill ${active ? "ok" : "locked"}`;
+        els.sideStatusTitle.textContent = active ? "Desktop access active" : "Desktop access locked";
+        els.sideStatusCopy.textContent = active
+          ? "Choose a cadet photo and search event photos."
+          : "Log in with the email and password from your desktop activation.";
+        els.metricAccess.textContent = active ? "On" : "--";
+      }
+
+      async function checkSession() {
+        if (!state.sessionToken) return false;
+        try {
+          const response = await fetch(`${API_BASE}/access/session`, {
+            headers: { Authorization: `Bearer ${state.sessionToken}` },
+          });
+          if (!response.ok) throw new Error("Session expired.");
+          const payload = await response.json();
+          setAccess(true, payload);
+          if (payload.email) setEmail(payload.email);
+          setStatus("Desktop login active. Choose a photo to search.", "ok");
+          return true;
+        } catch {
+          state.sessionToken = "";
+          sessionStorage.removeItem(STORAGE.session);
+          setAccess(false);
+          return false;
+        }
+      }
+
+      async function checkAccess() {
+        const email = currentEmail();
+        const password = currentPassword();
+        if (!email || !password) {
+          setStatus("Enter your desktop email and password. Need a login? Start Family Monthly in the iPhone app.", "error");
+          setAccess(false);
+          return;
+        }
+
+        setEmail(email);
+        setStatus("Logging in...");
+        try {
+          const response = await fetch(`${API_BASE}/access/login`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email, password }),
+          });
+          if (!response.ok) throw new Error("Login failed.");
+          const payload = await response.json();
+          state.sessionToken = payload.token;
+          sessionStorage.setItem(STORAGE.session, state.sessionToken);
+          setPassword("");
+          setAccess(true, payload.session);
+          setStatus("Desktop login active. Choose a photo to search.", "ok");
+        } catch {
+          setAccess(false);
+          setStatus("That login did not work. Check your email and password. If you need access, start Family Monthly in the iPhone app.", "error");
+        }
+      }
+
+      function chooseFile(file) {
+        if (!file) return;
+        state.selectedFile = file;
+        if (state.selectedPreviewURL) URL.revokeObjectURL(state.selectedPreviewURL);
+        state.selectedPreviewURL = URL.createObjectURL(file);
+        els.preview.src = state.selectedPreviewURL;
+        els.preview.hidden = false;
+        els.dropZone.classList.add("has-image", "is-ready");
+        els.dropTitle.textContent = "Cadet photo ready";
+        els.dropSubtitle.textContent = file.name;
+        els.rosterPreview.innerHTML = `<img src="${state.selectedPreviewURL}" alt="Selected cadet photo preview"><span class="drop-copy"><strong>Cadet photo selected</strong><span>${file.name}</span></span>`;
+      }
+
+      function explainSearchProblem(payload) {
+        const faces = Number(payload?.query_faces_detected);
+        if (faces === 0) return "No face detected. Choose a clearer, front-facing cadet photo.";
+        if (faces > 1) return "Multiple faces detected. Choose a photo with only your cadet visible.";
+        return "No matching event photos found yet.";
+      }
+
+      async function searchPhotos() {
+        if (!state.accessActive) {
+          setStatus("Desktop access must be active before searching.", "error");
+          return;
+        }
+        if (!state.selectedFile) {
+          setStatus("Choose a clear cadet photo before searching.", "error");
+          return;
+        }
+
+        setStatus("Sending your cadet photo for matching...");
+        els.search.disabled = true;
+
+        const form = new FormData();
+        form.append("file", state.selectedFile);
+        form.append("top_k", els.topK.value || "50");
+        form.append("min_score", thresholds[state.threshold].minScore);
+        form.append("face_index", "0");
+
+        try {
+          const response = await fetch(`${API_BASE}/access/desktop/search`, {
+            method: "POST",
+            headers: { Authorization: `Bearer ${state.sessionToken}` },
+            body: form,
+          });
+          if (response.status === 401) {
+            state.sessionToken = "";
+            sessionStorage.removeItem(STORAGE.session);
+            setAccess(false);
+            throw new Error("Session expired.");
+          }
+          if (!response.ok) throw new Error("Search failed.");
+          const payload = await response.json();
+          const matches = Array.isArray(payload.matches) ? payload.matches : [];
+          state.matches = matches.filter((match) => match && match.photo_url);
+          writeJSON(STORAGE.matches, state.matches);
+          renderPhotos();
+
+          if (state.matches.length === 0) {
+            setStatus(explainSearchProblem(payload), "error");
+          } else {
+            setStatus(`${state.matches.length} possible match${state.matches.length === 1 ? "" : "es"} found.`, "ok");
+            setTab("photos");
+          }
+        } catch {
+          setStatus("We could not search photos right now. Check your connection and try again.", "error");
+        } finally {
+          els.search.disabled = false;
+        }
+      }
+
+      function matchKey(match) {
+        return match.photo_url || match.photo_file || JSON.stringify(match);
+      }
+
+      function confidenceLabel(score) {
+        const numeric = Number(score);
+        if (!Number.isFinite(numeric)) return "Possible match";
+        if (numeric >= 0.8) return "Closest match";
+        if (numeric >= 0.65) return "Possible match";
+        return "Broad match";
+      }
+
+      function renderPhotos() {
+        els.metricMatches.textContent = String(state.matches.length);
+        els.metricSaved.textContent = String(state.savedURLs.size);
+
+        document.querySelectorAll("[data-photo-scope]").forEach((button) => {
+          button.setAttribute("aria-selected", String(button.dataset.photoScope === state.photoScope));
+        });
+
+        const source = state.photoScope === "saved"
+          ? state.matches.filter((match) => state.savedURLs.has(matchKey(match)))
+          : state.matches;
+
+        els.photoCount.textContent = `${source.length} photo${source.length === 1 ? "" : "s"}`;
+        els.emptyState.hidden = source.length > 0;
+        els.results.hidden = source.length === 0;
+        if (source.length === 0) {
+          const title = els.emptyState.querySelector("strong");
+          const copy = els.emptyState.querySelector("p");
+          title.textContent = state.photoScope === "saved" ? "Saved is empty" : "No photos ready";
+          copy.textContent = state.photoScope === "saved"
+            ? "Save matches here when you want to come back to them on this computer."
+            : "Run a photo search from Home after adding a cadet.";
+          return;
+        }
+
+        els.results.innerHTML = source.map((match, index) => {
+          const key = matchKey(match);
+          const saved = state.savedURLs.has(key);
+          const safeURL = String(match.photo_url);
+          return `
+            <article class="card photo-card">
+              <div class="photo-frame">
+                <img src="${escapeHTML(safeURL)}" alt="Possible CadetCatch match ${index + 1}" loading="lazy" referrerpolicy="no-referrer">
+                <button class="reload-photo" type="button" data-reload="${escapeHTML(key)}">
+                  ${icon("photos")}
+                  <span>Reload photo</span>
+                </button>
+              </div>
+              <div class="card-body">
+                <h3 class="card-title">${confidenceLabel(match.score)}</h3>
+                <p class="card-meta">CadetCatch Photos</p>
+                <div class="card-actions">
+                  <a class="small-button primary" href="${escapeHTML(safeURL)}" target="_blank" rel="noopener noreferrer">Open full photo</a>
+                  <button class="small-button" type="button" data-save="${escapeHTML(key)}">${saved ? "Remove saved" : "Save to this browser"}</button>
+                </div>
+              </div>
+            </article>
+          `;
+        }).join("");
+
+        els.results.querySelectorAll("img").forEach((image) => {
+          image.addEventListener("error", () => {
+            image.closest(".photo-frame")?.classList.add("failed");
+          });
+          image.addEventListener("load", () => {
+            image.closest(".photo-frame")?.classList.remove("failed");
+          });
+        });
+      }
+
+      function escapeHTML(value) {
+        return String(value)
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;");
+      }
+
+      function saveToggle(key) {
+        if (state.savedURLs.has(key)) {
+          state.savedURLs.delete(key);
+        } else {
+          state.savedURLs.add(key);
+        }
+        writeJSON(STORAGE.saved, [...state.savedURLs]);
+        renderPhotos();
+      }
+
+      function reloadPhoto(key) {
+        const card = document.querySelector(`[data-reload="${CSS.escape(key)}"]`)?.closest(".photo-card");
+        const image = card?.querySelector("img");
+        const match = state.matches.find((item) => matchKey(item) === key);
+        if (image && match?.photo_url) {
+          const separator = match.photo_url.includes("?") ? "&" : "?";
+          image.src = `${match.photo_url}${separator}reload=${Date.now()}`;
+        }
+      }
+
+      function resetLocal() {
+        const token = state.sessionToken;
+        if (token) {
+          fetch(`${API_BASE}/access/logout`, {
+            method: "POST",
+            headers: { Authorization: `Bearer ${token}` },
+          }).catch(() => {});
+        }
+        Object.values(STORAGE).forEach((key) => localStorage.removeItem(key));
+        sessionStorage.removeItem(STORAGE.session);
+        state.matches = [];
+        state.savedURLs.clear();
+        state.accessActive = false;
+        state.accessPayload = null;
+        state.sessionToken = "";
+        state.selectedFile = null;
+        setEmail("");
+        setAccess(false);
+        setStatus("This browser has been reset.");
+        renderPhotos();
+        setTab("home");
+      }
+
+      document.addEventListener("click", (event) => {
+        const tabButton = event.target.closest("[data-tab]");
+        if (tabButton) setTab(tabButton.dataset.tab);
+
+        const goTab = event.target.closest("[data-go-tab]");
+        if (goTab) setTab(goTab.dataset.goTab);
+
+        const thresholdButton = event.target.closest("[data-threshold]");
+        if (thresholdButton) {
+          state.threshold = thresholdButton.dataset.threshold;
+          localStorage.setItem(STORAGE.threshold, state.threshold);
+          renderThresholds();
+        }
+
+        const scopeButton = event.target.closest("[data-photo-scope]");
+        if (scopeButton) {
+          state.photoScope = scopeButton.dataset.photoScope;
+          renderPhotos();
+        }
+
+        const saveButton = event.target.closest("[data-save]");
+        if (saveButton) saveToggle(saveButton.dataset.save);
+
+        const reloadButton = event.target.closest("[data-reload]");
+        if (reloadButton) reloadPhoto(reloadButton.dataset.reload);
+      });
+
+      els.email.addEventListener("input", (event) => setEmail(event.target.value));
+      els.emailRoster.addEventListener("input", (event) => setEmail(event.target.value));
+      els.password.addEventListener("input", (event) => setPassword(event.target.value));
+      els.passwordRoster.addEventListener("input", (event) => setPassword(event.target.value));
+      els.checkAccess.addEventListener("click", checkAccess);
+      els.checkAccessRoster.addEventListener("click", checkAccess);
+      els.search.addEventListener("click", searchPhotos);
+      els.viewPhotos.addEventListener("click", () => setTab("photos"));
+      els.dropZone.addEventListener("click", () => els.file.click());
+      els.file.addEventListener("change", (event) => chooseFile(event.target.files?.[0]));
+      els.resetLocal.addEventListener("click", resetLocal);
+
+      els.dropZone.addEventListener("dragover", (event) => {
+        event.preventDefault();
+        els.dropZone.classList.add("is-ready");
+      });
+      els.dropZone.addEventListener("dragleave", () => {
+        if (!state.selectedFile) els.dropZone.classList.remove("is-ready");
+      });
+      els.dropZone.addEventListener("drop", (event) => {
+        event.preventDefault();
+        chooseFile(event.dataTransfer?.files?.[0]);
+      });
+
+      setEmail(localStorage.getItem(STORAGE.email) || "");
+      renderNavigation();
+      renderThresholds();
+      setAccess(false);
+      renderPhotos();
+      checkSession();
+    </script>
+  </body>
+</html>
