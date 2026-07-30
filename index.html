@@ -7,6 +7,7 @@
 <meta name="description" content="Upload one clear photo and let CadetCatch rank likely matches across Coast Guard Academy event-photo collections." />
 <link rel="canonical" href="https://cadetcatch.com/" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="preload" as="image" href="/assets/cadetcatch-family-phone-hero-v2.webp" type="image/webp" />
 <link rel="stylesheet" href="/site-responsive.css" />
 </head>
 <body>
@@ -25,32 +26,44 @@ html{scroll-behavior:smooth}
 body{margin:0;background:var(--white);font-family:var(--font-body);color:var(--text-body)}
 a{color:var(--uscg-blue)} a:hover{color:var(--cga-navy-600)}
 details summary::-webkit-details-marker{display:none}
+.family-hero-mobile-image{display:none}
+@media(max-width:720px){
+  .home-main{min-width:0!important}
+  .home-nav-link{display:none!important}
+  .home-nav{gap:12px!important;padding:0 16px!important}
+  .home-nav-actions{gap:0!important}
+  .home-nav-actions .desktop-plans-nav{display:inline-flex!important}
+  .family-hero{background:var(--cga-navy-900)!important}
+  .family-hero-mobile-image{display:block;width:100%;height:260px;object-fit:cover;object-position:62% 52%}
+  .family-hero-inner{min-height:0!important;padding:48px 24px!important}
+}
 </style>
 
 
-<div id="main-content" role="main" data-screen-label="Home" style="min-width:960px">
+<div id="main-content" class="home-main" role="main" data-screen-label="Home">
 
 <!-- NAV -->
 <div style="position:sticky;top:0;z-index:50;background:var(--white);border-bottom:1px solid var(--border-subtle)">
-  <div style="max-width:1200px;margin:0 auto;padding:0 24px;height:76px;display:flex;align-items:center;gap:32px">
+  <div class="home-nav" style="max-width:1200px;margin:0 auto;padding:0 24px;height:76px;display:flex;align-items:center;gap:32px">
     <a href="/" style="display:flex;align-items:center;gap:12px;text-decoration:none">
       <img src="https://cadetcatch.com/img/cadetcatch-icon.png" alt="CadetCatch app icon" style="width:40px;height:40px;border-radius:10px">
       <span style="font:600 22px var(--font-display);text-transform:uppercase;letter-spacing:.04em;color:var(--cga-navy-800)">CadetCatch</span>
     </a>
-    <div style="display:flex;align-items:center;gap:28px;margin-left:auto">
-      <a href="/swab-summer-photos/" style="font:600 13px var(--font-body);letter-spacing:.06em;text-transform:uppercase;color:var(--cga-navy-800);text-decoration:none">Swab Summer Guide</a>
-      <a href="/desktop/" style="font:700 13px var(--font-body);letter-spacing:.06em;text-transform:uppercase;color:var(--uscg-blue);text-decoration:none">Desktop Login</a>
-      <a href="/desktop/get-started/" style="font:600 13px var(--font-body);letter-spacing:.06em;text-transform:uppercase;color:var(--cga-navy-800);text-decoration:none">Desktop Plans</a>
-      <a href="/support/" style="font:600 13px var(--font-body);letter-spacing:.06em;text-transform:uppercase;color:var(--cga-navy-800);text-decoration:none">Support</a>
-      <a class="cc-button cc-button--primary cc-button--sm" href="https://apps.apple.com/us/app/cadetcatch/id6769565852" data-cc-app-store data-analytics-event="app_store_click">Download Free</a>
+    <div class="home-nav-actions" style="display:flex;align-items:center;gap:28px;margin-left:auto">
+      <a class="home-nav-link" href="/swab-summer-photos/" style="font:600 13px var(--font-body);letter-spacing:.06em;text-transform:uppercase;color:var(--cga-navy-800);text-decoration:none">Swab Summer Guide</a>
+      <a class="home-nav-link" href="/desktop/" style="font:700 13px var(--font-body);letter-spacing:.06em;text-transform:uppercase;color:var(--uscg-blue);text-decoration:none">Desktop Login</a>
+      <a class="desktop-plans-nav cc-button cc-button--primary cc-button--sm" href="/desktop/get-started/">Desktop Plans</a>
+      <a class="home-nav-link" href="/support/" style="font:600 13px var(--font-body);letter-spacing:.06em;text-transform:uppercase;color:var(--cga-navy-800);text-decoration:none">Support</a>
+      <a class="home-nav-link cc-button cc-button--primary cc-button--sm" href="https://apps.apple.com/us/app/cadetcatch/id6769565852" data-cc-app-store data-analytics-event="app_store_click">Download Free</a>
     </div>
   </div>
 </div>
 
 <!-- HERO -->
-<div style="background:var(--cga-navy-900)">
-  <div style="max-width:1200px;margin:0 auto;padding:88px 24px 0;display:grid;grid-template-columns:1.15fr .85fr;gap:64px;align-items:center">
-    <div style="padding-bottom:88px">
+<div class="family-hero" style="background:linear-gradient(90deg,rgba(15,31,56,.98) 0%,rgba(15,31,56,.92) 42%,rgba(15,31,56,.35) 72%,rgba(15,31,56,.08) 100%),url('/assets/cadetcatch-family-phone-hero-v2.webp') center right/cover no-repeat">
+  <img class="family-hero-mobile-image" src="/assets/cadetcatch-family-phone-hero-v2.webp" alt="Parents finding a photo of their cadet in CadetCatch" width="1536" height="1024" fetchpriority="high">
+  <div class="family-hero-inner" style="max-width:1200px;margin:0 auto;padding:96px 24px;min-height:640px;display:flex;align-items:center">
+    <div style="width:min(610px,100%)">
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:24px">
         <span style="width:34px;height:3px;background:var(--cga-gold-500)"></span>
         <span style="font:700 13px var(--font-body);letter-spacing:.18em;text-transform:uppercase;color:var(--cga-gold-400)">Built for Coast Guard Academy families</span>
@@ -59,11 +72,9 @@ details summary::-webkit-details-marker{display:none}
       <p style="margin:0 0 36px;font:18px/1.6 var(--font-body);color:var(--text-inverse-muted);max-width:52ch;text-wrap:pretty">Every photo drop means hours of squinting at identical haircuts. Upload one clear photo of your cadet and CadetCatch sorts the entire collection for you — turning thousands of images into a ranked shortlist you can review in minutes.</p>
       <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-bottom:20px">
         <a class="cc-button cc-button--primary cc-button--lg" href="/desktop/get-started/">Plans starting at $1.99</a>
+        <a class="cc-button cc-button--inverse cc-button--lg" href="/desktop/get-started/">Get Desktop Access</a>
       </div>
-      <p style="margin:0;font:14px/1.5 var(--font-body);color:var(--text-inverse-muted)">Desktop starts at $12.50/month. Already subscribed? Log in with your CadetCatch email and password.</p>
-    </div>
-    <div style="align-self:end;display:flex;justify-content:center">
-      <img src="https://cadetcatch.com/img/review-photo-finds.png" alt="CadetCatch iPhone screen showing likely photo matches" style="display:block;width:100%;max-width:360px;border-radius:24px 24px 0 0;box-shadow:0 24px 48px rgba(15,31,56,.4)">
+      <p style="margin:0;font:14px/1.5 var(--font-body);color:var(--text-inverse-muted)">Desktop starts at $12.50/month. <a href="/swab-summer-photos/" style="color:var(--cga-gold-400);font-weight:700">Get the free Swab Summer photo guide →</a></p>
     </div>
   </div>
 </div>
@@ -122,6 +133,17 @@ details summary::-webkit-details-marker{display:none}
   </div>
 </div>
 
+<!-- MID-PAGE CTA -->
+<div style="background:var(--cga-gold-500)">
+  <div style="max-width:1200px;margin:0 auto;padding:28px 24px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap">
+    <div>
+      <strong style="display:block;font:600 28px/1.1 var(--font-display);text-transform:uppercase;color:var(--cga-navy-900)">Ready to stop scrolling?</strong>
+      <span style="font:15px/1.5 var(--font-body);color:var(--cga-navy-800)">Compare desktop, app, and family access in one place.</span>
+    </div>
+    <a class="cc-button cc-button--outline cc-button--lg" href="/desktop/get-started/">Get Desktop Access</a>
+  </div>
+</div>
+
 <!-- DESKTOP ACCESS -->
 <div id="desktop-access" style="background:var(--slate-50);border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle)">
   <div style="max-width:1200px;margin:0 auto;padding:96px 24px">
@@ -135,7 +157,7 @@ details summary::-webkit-details-marker{display:none}
       <article style="background:var(--cga-navy-800);border-radius:16px;padding:36px 32px;display:flex;flex-direction:column;gap:16px">
         <div style="font:700 12px var(--font-body);letter-spacing:.14em;text-transform:uppercase;color:var(--cga-gold-400)">Already have access</div>
         <h3 style="margin:0;font:600 30px/1.1 var(--font-display);text-transform:uppercase;color:var(--white)">Log in with your CadetCatch email</h3>
-        <p style="margin:0;font:16px/1.6 var(--font-body);color:var(--text-inverse-muted);flex:1">Open the desktop app and enter the email and password from your desktop activation.</p>
+        <p style="margin:0;font:16px/1.6 var(--font-body);color:var(--text-inverse-muted);flex:1">Open CadetCatch in your browser and enter the email and password from your online activation.</p>
         <div><a class="cc-button cc-button--primary cc-button--lg" href="/desktop/">Open Desktop Login</a></div>
       </article>
       <article style="background:var(--white);border:1px solid var(--border-subtle);border-radius:16px;padding:36px 32px;display:flex;flex-direction:column;gap:16px">
@@ -245,8 +267,11 @@ details summary::-webkit-details-marker{display:none}
   <div style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(15,31,56,.6), rgba(15,31,56,.92))"></div>
   <div style="position:relative;max-width:840px;margin:0 auto;padding:104px 24px;text-align:center">
     <h2 style="margin:0 0 16px;font:600 var(--display-lg)/1.05 var(--font-display);letter-spacing:.02em;text-transform:uppercase;color:var(--white);text-wrap:pretty">Spend your summer finding moments, not opening images</h2>
-    <p style="margin:0 0 36px;font:17px/1.6 var(--font-body);color:var(--text-inverse-muted)">Download CadetCatch free, add one clear photo, and turn the next photo drop into a five-minute search.</p>
-    <a class="cc-button cc-button--primary cc-button--lg" href="https://apps.apple.com/us/app/cadetcatch/id6769565852" data-cc-app-store data-analytics-event="app_store_click">Download on the App Store</a>
+    <p style="margin:0 0 36px;font:17px/1.6 var(--font-body);color:var(--text-inverse-muted)">Choose desktop, app, or family access and turn the next photo drop into a five-minute search.</p>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+      <a class="cc-button cc-button--primary cc-button--lg" href="/desktop/get-started/">Get Desktop Access</a>
+      <a class="cc-button cc-button--inverse cc-button--lg" href="/swab-summer-photos/">Get the Free Photo Guide</a>
+    </div>
   </div>
 </div>
 
