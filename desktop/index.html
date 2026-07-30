@@ -901,11 +901,11 @@
     <section class="access-guide" aria-label="Desktop access help">
       <div class="access-guide-copy">
         <strong>Already have a desktop login? Use your CadetCatch email and password below.</strong>
-        <span>Need a login? Get the iPhone app, start Family Monthly, then request desktop activation through Support.</span>
+        <span>Need a login? Choose a monthly desktop plan online and create it immediately after checkout.</span>
       </div>
       <div class="access-guide-actions">
-        <a class="login-link" href="#email">Log in</a>
-        <a class="buy-link" href="https://apps.apple.com/us/app/cadetcatch/id6769565852" data-cc-app-store>Get access</a>
+        <a class="login-link" href="#login">Log in</a>
+        <a class="buy-link" href="/desktop/get-started/">See plans</a>
       </div>
     </section>
     <div class="app-shell">
@@ -977,7 +977,7 @@
               </article>
             </div>
 
-            <aside class="panel" aria-label="Find photos">
+            <aside class="panel" id="login" aria-label="Find photos">
               <div class="panel-title">
                 <div>
                   <h2>Find photos</h2>
@@ -999,10 +999,10 @@
                   <button class="secondary-button" id="check-access" type="button">Log In to Desktop</button>
                 </div>
 
-                <div class="status-box" id="status">Enter your CadetCatch desktop email and password. Need a login? Start Family Monthly in the iPhone app, then request desktop activation.</div>
+                <div class="status-box" id="status">Enter your CadetCatch desktop email and password. Need a login? Choose a desktop plan online.</div>
                 <div class="button-row">
-                  <a class="small-button primary" href="https://apps.apple.com/us/app/cadetcatch/id6769565852" target="_blank" rel="noopener noreferrer">Get Family Monthly</a>
-                  <a class="small-button" href="/support/">Request desktop activation</a>
+                  <a class="small-button primary" href="/desktop/get-started/">Get desktop access</a>
+                  <a class="small-button" href="/support/">Get help</a>
                 </div>
 
                 <label for="file">Cadet photo</label>
@@ -1115,7 +1115,7 @@
             </article>
             <article class="card info-item">
               <h3>Desktop access</h3>
-              <p>Desktop uses a secure email-and-password login. If you do not have one, start Family Monthly in the iPhone app and request desktop activation through Support.</p>
+              <p>Desktop uses a secure email-and-password login. If you do not have one, choose a monthly plan online and create your password after checkout.</p>
             </article>
           </div>
         </section>
@@ -1373,7 +1373,7 @@
         const email = currentEmail();
         const password = currentPassword();
         if (!email || !password) {
-          setStatus("Enter your desktop email and password. Need a login? Start Family Monthly in the iPhone app.", "error");
+          setStatus("Enter your desktop email and password. Need a login? Choose a desktop plan online.", "error");
           setAccess(false);
           return;
         }
@@ -1395,7 +1395,7 @@
           setStatus("Desktop login active. Choose a photo to search.", "ok");
         } catch {
           setAccess(false);
-          setStatus("That login did not work. Check your email and password. If you need access, start Family Monthly in the iPhone app.", "error");
+          setStatus("That login did not work. Check your email and password. If you need access, choose a desktop plan online.", "error");
         }
       }
 
