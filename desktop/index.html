@@ -7,6 +7,9 @@
     <meta name="description" content="Log in to CadetCatch Desktop with the email connected to your CadetCatch access, then search and review possible photo matches from your computer." />
     <link rel="canonical" href="https://cadetcatch.com/desktop/" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/_ds/uscga-design-system-12503736-1d00-466b-9c41-fce90bdde8cd/tokens/fonts.css" />
+    <link rel="stylesheet" href="/_ds/uscga-design-system-12503736-1d00-466b-9c41-fce90bdde8cd/tokens/colors.css" />
+    <link rel="stylesheet" href="/_ds/uscga-design-system-12503736-1d00-466b-9c41-fce90bdde8cd/tokens/typography.css" />
     <style>
       :root {
         color-scheme: light;
@@ -14,16 +17,16 @@
         --surface: #ffffff;
         --surface-soft: #f8fbff;
         --ink: #071426;
-        --navy: #173d72;
-        --navy-dark: #041125;
+        --navy: var(--uscg-blue, #173d72);
+        --navy-dark: var(--cga-navy-900, #041125);
         --muted: #64738a;
         --line: #d7e0ec;
-        --orange: #f2541b;
+        --orange: var(--uscg-red, #f2541b);
         --orange-dark: #d6420c;
         --green: #1c8f61;
         --red: #b42318;
         --shadow: 0 18px 44px rgba(7, 20, 38, 0.11);
-        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+        font-family: var(--font-body, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif);
       }
 
       * { box-sizing: border-box; }
@@ -64,6 +67,63 @@
 
       a {
         color: inherit;
+      }
+
+      .site-header {
+        background: white;
+        border-bottom: 1px solid var(--line);
+        position: relative;
+        z-index: 20;
+      }
+
+      .site-nav {
+        align-items: center;
+        display: flex;
+        gap: 24px;
+        height: 76px;
+        margin: auto;
+        max-width: 1200px;
+        padding: 0 24px;
+      }
+
+      .site-brand {
+        align-items: center;
+        color: var(--navy-dark);
+        display: flex;
+        font: 600 22px var(--font-display, Georgia, serif);
+        gap: 12px;
+        letter-spacing: .04em;
+        text-decoration: none;
+        text-transform: uppercase;
+      }
+
+      .site-brand img {
+        border-radius: 10px;
+        height: 40px;
+        width: 40px;
+      }
+
+      .site-links {
+        align-items: center;
+        display: flex;
+        gap: 24px;
+        margin-left: auto;
+      }
+
+      .site-links a {
+        color: var(--navy-dark);
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: .06em;
+        text-decoration: none;
+        text-transform: uppercase;
+      }
+
+      .site-links .plans-link {
+        background: var(--orange);
+        border-radius: 999px;
+        color: white;
+        padding: 12px 18px;
       }
 
       .app-shell {
@@ -873,6 +933,18 @@
       }
 
       @media (max-width: 560px) {
+        .site-links a:not(.plans-link) {
+          display: none;
+        }
+
+        .site-nav {
+          padding: 0 16px;
+        }
+
+        .site-brand {
+          font-size: 18px;
+        }
+
         .page-title {
           font-size: 46px;
         }
@@ -898,10 +970,11 @@
     </style>
   </head>
   <body>
+    <header class="site-header"><nav class="site-nav"><a class="site-brand" href="/"><img src="/img/cadetcatch-icon.png" alt="CadetCatch app icon">CadetCatch</a><div class="site-links"><a href="/swab-summer-photos/">Swab Summer Guide</a><a href="/support/">Support</a><a class="plans-link" href="/desktop/get-started/">View Plans</a></div></nav></header>
     <section class="access-guide" aria-label="Desktop access help">
       <div class="access-guide-copy">
         <strong>Already have a desktop login? Use your CadetCatch email and password below.</strong>
-        <span>Need a login? Choose a monthly desktop plan online and create it immediately after checkout.</span>
+        <span>Need a login? Compare monthly desktop plans. Secure online enrollment is opening shortly.</span>
       </div>
       <div class="access-guide-actions">
         <a class="login-link" href="#login">Log in</a>
